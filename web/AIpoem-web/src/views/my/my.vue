@@ -29,18 +29,18 @@
           <text>登录</text>  
         </div>
     </div>
-    </div>
-    </template>
-    <script>
+</div>
+</template>
+<script>
     
-        export default {
-            methods:{
-                navTo(url){
-                    this.$router.push(url)
-                }
+export default {
+    methods:{
+        navTo(url){
+            this.$router.push(url)
             }
         }
-    </script>
+    }
+</script>
     <style>
     .container1{
         height: 70px;

@@ -1,68 +1,62 @@
 <template>
     <div id="building">
-        <div class="form-container">
-        <p class="title">注册</p>
+      <div class="form-container">
+        <p class="title">忘记密码</p>
         <form class="form">
             <div class="input-group">
                 <label for="username">用户名</label>
-                <input type="text" name="username" id="username" placeholder="设置用户名" v-model="username">
+                <input type="text" name="username" id="username" placeholder="请输入用户名" v-model="username">
             </div>
             <div class="input-group">
-                <label for="password">输入密码</label>
-                <input type="password" name="password" id="password" placeholder="设置密码" v-model="password">
-            </div>
-            <div class="input-group">
-                <label for="email">邮箱地址</label>
-                <input type="text" name="email" id="email" placeholder="请输入邮箱地址" v-model="email">
+                <label for="password">输入修改后的密码</label>
+                <input type="password" name="password" id="password" placeholder="修改后的密码" v-model="password">
             </div>
             <div class="input-group">
                 <label for="code">邮箱验证码</label>
                 <input type="text" name="code" id="code" placeholder="输入邮箱验证码" v-model="code"><button id="count" @click="getCode" type="button">获取验证码</button>
             </div>
             <div class="interval"></div>
-            <button class="sign" @click="signIn" type="button">注册</button>
-        </form>
-        <p class="signup">已有账号?
-            <a href @click="navTo('./login')">登录</a>
-        </p>
+            <button class="sign" @click="passwordChange" type="button">确认</button>
+          </form>
+          <p class="signup">没有账号?
+		      <a href @click="navTo('/register')">返回登录</a>
+	</p>
     </div>
-    </div>
+  </div>
 </template>
 <script>
-import {get,post,put} from '../../../utils/request'
-import axios from 'axios'
-  export default {
-    data(){
-      return{
-        username:'',
-        password:'',
-        email:'',
-        code:'',
-      }
-    },
-    methods:{
-      navTo(url){
-            this.$router.push(url)
-            },
-      signIn(){
-        //注册post方法
-        get('/user/register',{
-          username:this.username,
-          password:this.password,
-          email:this.email,
-          code:this.code
-        }).then(res=>{
-          console.log(res)
-        })
+import {get, post} from '../../../utils/request'
+      export default {
+      data(){
+        return{
+          username:'',
+          password:'',
+          code:''
+        }
       },
-      getCode(){
-        //获取邮箱验证码get方法调用
-        get('/email',{
-          email:this.email
-        })
+      methods:{
+          navTo(url){
+            this.$router.push(url)
+          },
+          getCode(){
+            //获取邮箱验证码
+            get('/user/forget/send',{
+              username:this.username
+            })
+          },
+          passwordChange(){
+            //密码修改方法
+            get('/user/forget',{
+              username:this.username,
+              password:this.password,
+              code:this.code,
+            }).then(res=>{
+              console.log(res)
+              alert('修改成功')
+            })
+          }
+        },
       }
-    }
-}
     </script>
     <style scoped>
     .form-container {
@@ -110,7 +104,15 @@ import axios from 'axios'
       padding: 0.75rem 1rem;
       color: rgba(243, 244, 246, 1);
     }
-    
+    #code{
+      width: 60%;
+      border-radius: 0.375rem;
+      border: 1px solid rgba(55, 65, 81, 1);
+      outline: 0;
+      background-color: rgba(17, 24, 39, 1);
+      padding: 0.75rem 1rem;
+      color: rgba(243, 244, 246, 1);
+    }
     .input-group input:focus {
       border-color: rgba(167, 139, 250);
     }
@@ -198,18 +200,6 @@ import axios from 'axios'
       position:fixed;
       background-size:100% 100%;
     }
-    .interval{
-      height:30px
-    }
-    #code{
-      width: 60%;
-      border-radius: 0.375rem;
-      border: 1px solid rgba(55, 65, 81, 1);
-      outline: 0;
-      background-color: rgba(17, 24, 39, 1);
-      padding: 0.75rem 1rem;
-      color: rgba(243, 244, 246, 1);
-    }
     #count{
 				height: 36px;
 				font-size: 14px;
@@ -220,5 +210,8 @@ import axios from 'axios'
 				border: none;
 				border-radius: 3px;
 				margin-left: 10px;
+    }
+    .interval{
+      height:30px
     }
     </style>
