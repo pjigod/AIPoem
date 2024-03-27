@@ -4,6 +4,7 @@ const instance = axios.create({
     timeout: 5000,
     headers: {
       'content-Type': 'application/json;charset=UTF-8',
+      'token':'be105ee5c3a95402936e4f51c27960e0ea4e8ef33dd6be6c1f6580a9f2ca9ef1N2024-03-27T21:18:44.218262100E2024-03-27T22:18:44.218262100'
     },
   });
   instance.interceptors.request.use(

@@ -8,14 +8,15 @@
         <div class="storyboard">
             <div id="home" class="tabbar" @click="navTo('/home')">首页</div>
             <div id="create" class="tabbar" @click="navTo('/createPoem')">创作</div>
-            <div id="collection" class="tabbar" @click="navTo('/home')">诗廊</div>
+            <div id="collection" class="tabbar" @click="navTo('/poemCollect')">诗廊</div>
             <div id="my" class="tabbar" @click="navTo('/my')">我的</div>
             <div id="about" class="tabbar" @click="navTo('/about')" style="color: aliceblue;">关于</div>
         </div>
         <div class="search">
             <div class="search-text">
                 <input type="text" placeholder="请输入"  class="search-input">
-                <button>搜索</button>
+                <button class="search-button">搜索</button>
+
             </div>
             
         </div>
@@ -86,10 +87,23 @@
     }
     .search-input{
         width: 200px;
-        height: 25px;
+        height: 30px;
         text-indent: 25px;
-        border-radius: 5px;
+        border-radius: 16px 0 0 16px;
+        border: 0 none;
+        outline:none;
+  
         
+    }
+    .search-button{
+        border-radius: 0 16px 16px 0;
+        width: 77px;
+        height: 32px;
+        border: 0 none;
+        outline: 0;
+        font-size: 19px;
+        font-family: KaiTi;
+        cursor: pointer;
     }
     .register{
         width: 7%;
