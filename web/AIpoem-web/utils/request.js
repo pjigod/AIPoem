@@ -1,17 +1,20 @@
 import axios from "axios";
+import store from "@/store";
 const instance = axios.create({
     baseURL: 'http://124.221.53.69:8080',
     timeout: 5000,
     headers: {
       'content-Type': 'application/json;charset=UTF-8',
-      'token':'be105ee5c3a95402936e4f51c27960e0ea4e8ef33dd6be6c1f6580a9f2ca9ef1N2024-03-27T21:18:44.218262100E2024-03-27T22:18:44.218262100'
     },
   });
   instance.interceptors.request.use(
     (config) => {
       // 在发送请求之前做些什么
       // 添加请求头等操作
-      console.log("请求成功");
+      if(store.state.token){
+        config.headers['token']=store.state.token
+      }
+      console.log(config.headers['token'])
       return config;
     },
     (error) => {
@@ -29,7 +32,7 @@ const instance = axios.create({
     //请求失败
     error => {
         //可根据不同的状态去区分不同的错误，达到不同效果
-        alert(error.response.data.message);
+        console.log(error);
         return Promise.reject(error);
     }
   );

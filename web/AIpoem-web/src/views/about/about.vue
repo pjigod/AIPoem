@@ -33,7 +33,6 @@
     </div>
     </template>
     <script>
-    
         export default {
             methods:{
                 navTo(url){

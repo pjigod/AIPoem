@@ -45,6 +45,7 @@
 </div>
 </template>
 <script>
+import store from '@/store'
 import {get,post,put} from '../../../utils/request'
     export default {
       data(){
@@ -65,12 +66,19 @@ import {get,post,put} from '../../../utils/request'
           }).then(res=>{
             //登陆成功，跳转
             console.log(res)
+            alert('登录成功')
             if(res.status=='200'){
+              let data=res.data.data
+              this.$store.commit('set_token',data)
+              console.log(store.state.token)
               this.navTo('/home')
             }
           })
         },
-        }
+        loginByPhone(){
+          
+          },
+        },
     }
 </script>
 <style scoped>
