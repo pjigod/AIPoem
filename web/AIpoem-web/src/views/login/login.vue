@@ -70,7 +70,7 @@ import {get,post,put} from '../../../utils/request'
             if(res.status=='200'){
               let data=res.data.data
               this.$store.commit('set_token',data)
-              console.log(store.state.token)
+              console.log(store.state.token);
               this.navTo('/home')
             }
           })

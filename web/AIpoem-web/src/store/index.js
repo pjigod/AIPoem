@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 const store =createStore({
   state(){
     return{
-      token:''
+      token:'',
     }  
   },
   mutations:{
@@ -11,8 +11,8 @@ const store =createStore({
       state.token = token 
     },
     del_token(state){
-        state.token = '' 
-    }
+      state.token = '' 
+    },
   },
   actions:{
 

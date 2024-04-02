@@ -1,0 +1,158 @@
+<template>
+  <div class="container1">
+        <div class="text">
+            <div class="text-content">
+                <text style="font-size: 60px;font-family:'KaiTi'">AI赋诗</text>
+            </div>
+        </div>
+        <div class="storyboard">
+            <div id="home" class="tabbar" @click="navTo('/home')">首页</div>
+            <div id="create" class="tabbar" @click="navTo('/createPoem')" style="color: aliceblue;">创作</div>
+            <div id="collection" class="tabbar" @click="navTo('/poemCollect')">诗廊</div>
+            <div id="my" class="tabbar" @click="navTo('/my')">我的</div>
+            <div id="about" class="tabbar" @click="navTo('/about')">关于</div>
+        </div>
+        <div class="search">
+            <div class="search-text">
+                <input type="text" placeholder="请输入" class="search-input">
+                <button class="search-button">搜索</button>
+            </div>
+        </div>
+        <div v-if="userinfo" class="avatar">
+            <img src="../../src/static/img/user.png" class="img">
+        </div>
+        <div class="register" v-else>
+            <div class="register-content" @click="navTo('/register')">
+                注册
+            </div>
+        </div>
+        <div v-if="userinfo" class="logout">
+            <button type="button" @click="logout" class="button">登出</button>
+        </div>
+        <div class="login" v-else>
+            <div class="login-content" @click="navTo('/login')">
+                <text>登录</text>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+export default {
+    data(){
+        return{
+            userinfo:this.$store.state.token
+        }
+    },
+    methods:{
+        navTo(url) {
+            this.$router.push(url)
+            console.log(this.$store.state.token)
+            console.log(this.userinfo)
+        },
+        logout(){
+            this.$store.commit('del_token')
+        }
+    },
+}
+</script>
+<style>
+.container1{
+        height: 70px;
+        width:100%;
+        display: flex;
+        background-color: grey;
+        cursor: default;
+}
+.text{
+        height: 100%;
+        width: 25%;
+        display: flex;
+}
+.text-content{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+}
+.storyboard{
+        display: flex;
+        gap: 40px;
+}
+.tabbar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-family:'KaiTi'
+}
+.tabbar:hover{
+        color: aliceblue;
+}
+.search{
+        display: flex;
+        width: 20%;
+        margin-left: 170px;
+}
+.search-text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.search-input{
+        width: 200px;
+        height: 30px;
+        text-indent: 25px;
+        border-radius: 16px 0 0 16px;
+        border: 0 none;
+        outline:none;        
+    }
+    .search-button{
+        border-radius: 0 16px 16px 0;
+        width: 77px;
+        height: 32px;
+        border: 0 none;
+        outline: 0;
+        font-size: 19px;
+        font-family: KaiTi;
+        cursor: pointer;
+    }
+    .register{
+        width: 7%;
+        display: flex;
+    
+    }
+    .register-content{
+        display: flex;
+        align-items: center;
+    
+    }
+    .login{
+        display: flex;
+        width: 7%;
+    
+    }
+    .login-content{
+        display: flex;
+        align-items: center;
+       
+    }
+.avatar{
+    display: flex;
+    width: 7%;
+}
+.img{
+    border-radius: 50%;
+    border-color: white;
+}
+.logout{
+    width: 20%;
+    display: flex;
+}
+.button{
+    background-color: rgb(138, 60, 60);
+    width:100px;
+    height:40px
+    
+}
+</style>

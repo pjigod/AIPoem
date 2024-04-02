@@ -1,36 +1,5 @@
 <template>
-    <div class="container1">
-        <div class="text">
-            <div class="text-content">
-                <text style="font-size: 60px; font-family:'KaiTi'">AI赋诗</text>
-            </div>
-        </div>
-        <div class="storyboard">
-            <div id="home" class="tabbar" @click="navTo('/home')">首页</div>
-            <div id="create" class="tabbar" @click="navTo('/createPoem')">创作</div>
-            <div id="collection" class="tabbar" @click="navTo('/poemCollect')">诗廊</div>
-            <div id="my" class="tabbar" @click="navTo('/my')" style="color: aliceblue;">我的</div>
-            <div id="about" class="tabbar" @click="navTo('/about')">关于</div>
-        </div>
-        <div class="search">
-            <div class="search-text">
-                <input type="text" placeholder="请输入"  class="search-input">
-                <button class="search-button">搜索</button>
-
-            </div>
-            
-        </div>
-        <div class="register">
-        <div class="register-content" @click="navTo('/register')">
-            注册
-        </div>
-    </div>
-    <div class="login">
-        <div class="login-content" @click="navTo('/login')">
-          <text>登录</text>  
-        </div>
-    </div>
-</div>
+    <Menu></Menu>
 </template>
 <script>
     

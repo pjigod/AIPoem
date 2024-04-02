@@ -53,6 +53,7 @@ import axios from 'axios'
           code:this.code
         }).then(res=>{
           console.log(res)
+          alert("注册成功")
         })
       },
       getCode(){
