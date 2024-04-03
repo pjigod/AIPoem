@@ -68,7 +68,7 @@
 .container{
     height: 350px;
     width: 420px;
-    background-color: rgb(158, 195, 231);
+    background-color: #EBECED;
     box-shadow: 2px 2px 2px 2px black;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
