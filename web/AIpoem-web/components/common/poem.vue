@@ -1,6 +1,6 @@
 <template>
 <!-- 单个诗组件 -->
-    <div class="container">
+    <div class="container" >
         <div class="title">
             {{ title }}
         </div>
@@ -32,9 +32,7 @@
                         <text>{{ ctime }}</text>
                     </div>
                 </div>
-                <div class="download">
-                   <img src="../../src/static/img/download.png" style="height: 30px;width: 30px;">
-                </div>
+             
             </div>
         </div>
         <div class="gap2"></div>
@@ -47,6 +45,12 @@
             return{
 
             }
+        },
+        methods:{
+            navTo(url){
+                    this.$router.push(url)
+                   
+                }
         },
         computed(){
 

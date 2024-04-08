@@ -7,6 +7,7 @@ import createPoem from '../views/createPoem/createPoem.vue'
 import register from '../views/register/register.vue'
 import forget from '../views/forget/forget.vue'
 import poemCollect from '../views/poemCollect/poemCollect.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -54,6 +55,7 @@ const router = createRouter({
       name: 'poemCollect',
       component: poemCollect
     },
+ 
     
   ]
 })

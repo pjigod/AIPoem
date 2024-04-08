@@ -69,6 +69,8 @@
 
                 <div class="head-container">
                     <div class="couple-text">藏头诗</div>
+                    <div class="couple-temp">请输入头字:</div>
+                    <input :disabled="flag !== 4" v-model="message4">
                 </div>
                 <div class="cometrue-button">
                     <button @click="createpoem">开始生成</button>
@@ -77,7 +79,7 @@
         </div>
         <div class="createpoem">
             <div class="crecontainer">
-                
+                {{ poem }}
             </div>
         </div>
     </div>
@@ -91,8 +93,11 @@ export default {
             message1: '',
             message2: '',
             message3: '',
+            message4: '',
             tag: '',
-            style: ''
+            style: '',
+            poem:'',
+            tempid:0,
 
         }
     },
@@ -118,6 +123,12 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
+                    get('/poem/get',{
+                        id:res.data
+                    }).then(res=>{
+                        console.log(res.data.output)
+                        this.poem=res.data.output
+                    })
                 })
             }
             if (this.flag === 2) {
@@ -128,6 +139,8 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
+                    this.poem=res.data.output
+
                 })
             }
             if (this.flag === 3) {
@@ -138,14 +151,44 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
+                    this.poem=res.data.output
+
                 })
             }
-            // if(flag===4){
-            //     this.tag='poem'
-            // }
+            if(this.flag===4){
+                this.tag='cangtou'
+                get('/poem/create', {
+                    message: this.message4,
+                    tag: this.tag,
+                    style: this.style,
+                    rownum:5
+                }).then(res => {
+                    console.log(res)
+                    this.tempid=res.data.data
+                    setTimeout(() => {
+                        get('/poem/get',{
+                        id:this.tempid
+                    }).then(res=>{
+                        // console.log(res)
+                        // console.log(res.data.data.output)
+                        this.poem=res.data.data.output
+                        // console.log(this.poem)
+                    })
+                    },5000)
+                    
+
+                })
+            }
 
         }
-    }
+    },
+    // watch:{
+    //     poem(newValue){
+    //         if(newValue!=''){
+    //             console.log('1')
+    //         }
+    //     }
+    // }
 }
 </script>
 <style>
