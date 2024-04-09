@@ -96,8 +96,8 @@ export default {
             message4: '',
             tag: '',
             style: '',
-            poem:'',
-            tempid:0,
+            poem: '',
+            tempid: 0,
 
         }
     },
@@ -123,11 +123,21 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
-                    get('/poem/get',{
-                        id:res.data
-                    }).then(res=>{
+                    get('/poem/get', {
+                        id: res.data
+                    }).then(res => {
                         console.log(res.data.output)
-                        this.poem=res.data.output
+                        this.tempid = res.data.data
+                        setTimeout(() => {
+                            get('/poem/get', {
+                                id: this.tempid
+                            }).then(res => {
+                                // console.log(res)
+                                // console.log(res.data.data.output)
+                                this.poem = res.data.data.output
+                                // console.log(this.poem)
+                            })
+                        }, 5000)
                     })
                 })
             }
@@ -139,7 +149,17 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
-                    this.poem=res.data.output
+                    this.tempid = res.data.data
+                    setTimeout(() => {
+                        get('/poem/get', {
+                            id: this.tempid
+                        }).then(res => {
+                            // console.log(res)
+                            // console.log(res.data.data.output)
+                            this.poem = res.data.data.output
+                            // console.log(this.poem)
+                        })
+                    }, 5000)
 
                 })
             }
@@ -151,32 +171,44 @@ export default {
                     style: this.style
                 }).then(res => {
                     console.log(res)
-                    this.poem=res.data.output
+                    this.tempid = res.data.data
+                    setTimeout(() => {
+                        get('/poem/get', {
+                            id: this.tempid
+                        }).then(res => {
+                            // console.log(res)
+                            // console.log(res.data.data.output)
+                            this.poem = res.data.data.output
+                            // console.log(this.poem)
+                        })
+                    }, 5000)
 
                 })
             }
-            if(this.flag===4){
-                this.tag='cangtou'
+            if (this.flag === 4) {
+                this.tag = 'cangtou'
                 get('/poem/create', {
                     message: this.message4,
                     tag: this.tag,
                     style: this.style,
-                    rownum:5
+
                 }).then(res => {
                     console.log(res)
-                    this.tempid=res.data.data
+                    this.tempid = res.data.data
                     setTimeout(() => {
-                        get('/poem/get',{
-                        id:this.tempid
-                    }).then(res=>{
-                        // console.log(res)
-                        // console.log(res.data.data.output)
-                        this.poem=res.data.data.output
-                        // console.log(this.poem)
-                    })
-                    },5000)
-                    
+                        get('/poem/get', {
+                            id: this.tempid
+                        }).then(res => {
+                            // console.log(res)
+                            // console.log(res.data.data.output)
+                            this.poem = res.data.data.output
+                            // console.log(this.poem)
+                        })
+                    }, 5000)
 
+
+                }).error(err => {
+                    console.log(err)
                 })
             }
 
