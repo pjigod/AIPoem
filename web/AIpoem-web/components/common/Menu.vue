@@ -32,7 +32,7 @@
             </div>
         </div>
         <div v-if="userinfo" class="avatar">
-            <img src="../../src/static/img/user.png" class="img">
+            <img :src="avatarphoto" class="img">
         </div>
         <div class="register" v-else>
             <div class="register-content" @click="navTo('/register')">
@@ -52,6 +52,7 @@
 
 <script>
 import { ref, onBeforeMount } from 'vue';
+import {get} from '../../utils/request'
 export default {
     setup() {
     const currentPage = ref(''); // 使用ref创建响应式数据
@@ -66,16 +67,21 @@ export default {
   },
     data() {
         return {
-            userinfo: this.$store.state.token,
-            flag: 0,
-           
-
+        userinfo: this.$store.state.token,
+        flag: 0,
+        avatarphoto:''
         }
     },
     methods: {
         changeFlag(f) {
             this.flag = f
             //console.log(this.flag)
+        },
+        getAvatar(){
+        get("/user/profile").then((res) => {
+            console.log(res.data.data);
+            this.avatarphoto='http://124.221.53.69:8080/photo/get?url='+res.data.data.avatar
+        });
         },
         navTo(url) {
             this.$router.push(url)
@@ -84,6 +90,8 @@ export default {
         },
         logout() {
             this.$store.commit('del_token')
+            this.userinfo=''
+            alert('您已成功退出账号')
         }
     },
     mounted(){
@@ -102,7 +110,7 @@ export default {
         if(this.currentPage==='/about'){
             this.flag=5
         }
-        
+        this.getAvatar();
     }
   
 }
