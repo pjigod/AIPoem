@@ -53,6 +53,8 @@ import {get, post} from '../../../utils/request'
             }).then(res=>{
               console.log(res)
               alert('修改成功')
+            }).catch(err=>{
+              alert(err.response.data.message)
             })
           }
         },

@@ -27,12 +27,12 @@
         </div>
         <div class="search">
             <div class="search-text">
-        <input type="text" placeholder="请输入" class="search-input" v-model="searchConnent">
-        <button class="search-button" @click="navTo('/searchList/'+searchConnent)">搜索</button>
-    </div>
+                <input type="text" placeholder="请输入" class="search-input" v-model="searchConnent">
+                <button class="search-button" @click="navTo('/searchList/' + searchConnent)">搜索</button>
+            </div>
         </div>
         <div v-if="userinfo" class="avatar">
-            <img src="../../src/static/img/user.png" class="img">
+            <img :src="avatarphoto" class="img">
         </div>
         <div class="register" v-else>
             <div class="register-content" @click="navTo('/register')">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div v-if="userinfo" class="logout">
-            <button  @click="logout" class="button">登出</button>
+            <button @click="logout" class="button">登出</button>
         </div>
         <div class="login" v-else>
             <div class="login-content" @click="navTo('/login')">
@@ -55,28 +55,34 @@ import { ref, onBeforeMount } from 'vue';
 import { get } from '../../utils/request';
 export default {
     setup() {
-    const currentPage = ref(''); // 使用ref创建响应式数据
+        const currentPage = ref(''); // 使用ref创建响应式数据
 
-    onBeforeMount(() => {
-      currentPage.value = window.location.pathname; // 在组件渲染前获取当前页面路径并更新data属性的值
-    });
+        onBeforeMount(() => {
+            currentPage.value = window.location.pathname; // 在组件渲染前获取当前页面路径并更新data属性的值
+        });
 
-    return {
-      currentPage
-    };
-  },
+        return {
+            currentPage
+        };
+    },
     data() {
         return {
             userinfo: this.$store.state.token,
             flag: 0,
-            searchConnent:''
-
+            searchConnent: '',
+            avatarphoto: ''
         }
     },
     methods: {
         changeFlag(f) {
             this.flag = f
             //console.log(this.flag)
+        },
+        getAvatar() {
+            get("/user/profile").then((res) => {
+                console.log(res.data.data);
+                this.avatarphoto = 'http://124.221.53.69:8080/photo/get?url=' + res.data.data.avatar
+            });
         },
         navTo(url) {
             this.$router.push(url)
@@ -85,36 +91,34 @@ export default {
         },
         logout() {
             this.$store.commit('del_token')
+            this.userinfo = ''
+            alert('您已成功退出账号')
         },
-        // tosearch(){
-        //     // console.log(searchConnent)
-        //     // get('/poem/search',{
-        //     //     key:this.searchConnent
-        //     // }).then(res=>{
-        //     //     console.log(res)
-        //     // })
 
-        //     this.navTo('/searchList/'+this.searchConnent)
-        // }
+
     },
-    mounted(){
-        if(this.currentPage==='/home'){
-            this.flag=1
+    mounted() {
+        if (this.currentPage === '/home') {
+            this.flag = 1
         }
-        if(this.currentPage==='/createPoem'){
-            this.flag=2
+        if (this.currentPage === '/createPoem') {
+            this.flag = 2
         }
-        if(this.currentPage==='/poemCollect'){
-            this.flag=3
+        if (this.currentPage === '/poemCollect') {
+            this.flag = 3
         }
-        if(this.currentPage==='/my'){
-            this.flag=4
+        if (this.currentPage === '/my') {
+            this.flag = 4
         }
-        if(this.currentPage==='/about'){
-            this.flag=5
+        if (this.currentPage === '/about') {
+            this.flag = 5
         }
-        
+        this.getAvatar();
+
     },
+
+
+
 
 }
 </script>
@@ -173,6 +177,7 @@ export default {
     align-items: center;
     justify-content: center;
 }
+
 .search-input {
     width: 160px;
     height: 30px;
