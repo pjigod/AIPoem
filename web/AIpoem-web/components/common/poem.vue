@@ -15,9 +15,9 @@
             <div class="container3">
                 <div class="author">
                     <div class="author-img">
-                        <img src="../../src/static/img/user.png" style="height: 30px;width: 30px;" >
+                        <img :src=imgUrl style="height: 30px;width: 30px; border-radius: 50%;" >
                     </div>
-                    <div class="author-id">
+                    <div class="author-id" style="margin-left: 8px;">
                         <text>{{ authorId }}</text>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
     export default{
         data (){
             return{
-
+                imgUrl:''
             }
         },
         methods:{
@@ -52,7 +52,8 @@
                    
                 }
         },
-        computed(){
+        mounted(){
+			this.imgUrl = 'http://124.221.53.69:8080/photo/get?url=' + this.PuserImgUrl;
 
         },
         props:[
@@ -61,7 +62,8 @@
             'authorId',
             'type',
             'poemtext',
-            'title'
+            'title',
+            'PuserImgUrl'
         ],
 
 

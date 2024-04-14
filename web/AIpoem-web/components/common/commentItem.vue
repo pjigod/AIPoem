@@ -1,7 +1,7 @@
 <template>
 <div class="comment-container">
    <div class="left-image">
-
+        <img :src=imgUrl style="height: 60px;width: 60px; border-radius: 50%;">
    </div>
    <div class="right_comment">
         <div class="top-userid">
@@ -20,15 +20,22 @@
 export default {
     data() {
         return{
-            
+            imgUrl:''
         }
     },
     props:[
         'cid',
         'content',
         'time',
-        'userId'
-    ]
+        'userId',
+        'userImgUrl'
+
+    ],
+    mounted() {
+			this.imgUrl = 'http://124.221.53.69:8080/photo/get?url=' + this.userImgUrl;
+		}
+    
+    
 }
 </script>
 <style>
@@ -41,6 +48,9 @@ export default {
 .left-image{
     width: 20%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .right_comment{

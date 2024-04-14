@@ -27,9 +27,9 @@
         </div>
         <div class="search">
             <div class="search-text">
-                <input type="text" placeholder="请输入" class="search-input">
-                <button class="search-button">搜索</button>
-            </div>
+        <input type="text" placeholder="请输入" class="search-input" v-model="searchConnent">
+        <button class="search-button" @click="navTo('/searchList/'+searchConnent)">搜索</button>
+    </div>
         </div>
         <div v-if="userinfo" class="avatar">
             <img src="../../src/static/img/user.png" class="img">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div v-if="userinfo" class="logout">
-            <button type="button" @click="logout" class="button">登出</button>
+            <button  @click="logout" class="button">登出</button>
         </div>
         <div class="login" v-else>
             <div class="login-content" @click="navTo('/login')">
@@ -52,6 +52,7 @@
 
 <script>
 import { ref, onBeforeMount } from 'vue';
+import { get } from '../../utils/request';
 export default {
     setup() {
     const currentPage = ref(''); // 使用ref创建响应式数据
@@ -68,7 +69,7 @@ export default {
         return {
             userinfo: this.$store.state.token,
             flag: 0,
-           
+            searchConnent:''
 
         }
     },
@@ -84,7 +85,17 @@ export default {
         },
         logout() {
             this.$store.commit('del_token')
-        }
+        },
+        // tosearch(){
+        //     // console.log(searchConnent)
+        //     // get('/poem/search',{
+        //     //     key:this.searchConnent
+        //     // }).then(res=>{
+        //     //     console.log(res)
+        //     // })
+
+        //     this.navTo('/searchList/'+this.searchConnent)
+        // }
     },
     mounted(){
         if(this.currentPage==='/home'){
@@ -103,8 +114,8 @@ export default {
             this.flag=5
         }
         
-    }
-  
+    },
+
 }
 </script>
 <style>
@@ -156,14 +167,14 @@ export default {
     margin-left: 170px;
 }
 
+
 .search-text {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .search-input {
-    width: 200px;
+    width: 160px;
     height: 30px;
     text-indent: 25px;
     border-radius: 16px 0 0 16px;

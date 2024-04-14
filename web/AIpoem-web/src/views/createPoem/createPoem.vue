@@ -200,11 +200,11 @@ export default {
                             id: this.tempid
                         }).then(res => {
                             // console.log(res)
-                            // console.log(res.data.data.output)
+                             console.log(res.data.data.output)
                             this.poem = res.data.data.output
                             // console.log(this.poem)
                         })
-                    }, 5000)
+                    }, 10000)
 
 
                 }).error(err => {
