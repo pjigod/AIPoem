@@ -79,8 +79,10 @@
         </div>
         <div class="createpoem">
             <div class="crecontainer">
-                {{ poem }}
-                <!-- <div class="dot-spinner">
+                <div class="poemtocre">
+                    <poemGradiant></poemGradiant>
+                </div>
+                <div v-if="isload" class="dot-spinner">
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
@@ -89,13 +91,15 @@
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+import Menu from '../../../components/common/Menu.vue'
 import { get } from '../../../utils/request'
+import poemGradiant from '../../../components/common/poemGradiant.vue'
 export default {
     data() {
         return {
@@ -108,8 +112,12 @@ export default {
             style: '',
             poem: '',
             tempid: 0,
+            isload:false
 
         }
+    },
+    components:{
+        poemGradiant
     },
     methods: {
         navTo(url) {
@@ -120,11 +128,7 @@ export default {
             // console.log(this.flag)
         },
         createpoem() {
-            // console.log(this.message1)
-            // console.log(this.message2)
-            // console.log(this.message3)
-            // console.log(this.tag)
-            // console.log(this.style)
+          this.isload=true
             if (this.flag === 1) {
                 this.tag = 'poem'
                 get('/poem/create', {
@@ -142,10 +146,8 @@ export default {
                             get('/poem/get', {
                                 id: this.tempid
                             }).then(res => {
-                                // console.log(res)
-                                // console.log(res.data.data.output)
                                 this.poem = res.data.data.output
-                                // console.log(this.poem)
+                                this.isload=false
                             })
                         }, 5000)
                     })
@@ -167,6 +169,7 @@ export default {
                             // console.log(res)
                             // console.log(res.data.data.output)
                             this.poem = res.data.data.output
+                            this.isload=false
                             // console.log(this.poem)
                         })
                     }, 5000)
@@ -190,6 +193,8 @@ export default {
                             // console.log(res.data.data.output)
                             this.poem = res.data.data.output
                             // console.log(this.poem)
+                            this.isload=false
+
                         })
                     }, 5000)
 
@@ -210,11 +215,13 @@ export default {
                             id: this.tempid
                         }).then(res => {
                             // console.log(res)
-                            console.log(res.data.data.output)
+                           
                             this.poem = res.data.data.output
+                            this.isload=false
+
                             // console.log(this.poem)
                         })
-                    }, 10000)
+                    }, 5000)
 
 
                 }).error(err => {
@@ -372,6 +379,9 @@ export default {
     height: 600px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .radio-buttons-container {

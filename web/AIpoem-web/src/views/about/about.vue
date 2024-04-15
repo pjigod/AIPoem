@@ -2,8 +2,9 @@
     <Menu></Menu>
     <section>
         <div class="swiper-container">
-            <swiper :modules="modules" :slides-per-view="4" :space-between="50" @swiper="onSwiper" :loop="true" :effect="coverflow"
-                :grab-cursor="true"  :coverflow-effect="{rotate:0,stretch:0,depth:100,modifier:2,slideShadows:true}" 
+            <swiper :modules="modules" :slides-per-view="4" :space-between="50" @swiper="onSwiper" :loop="true"
+                :effect="coverflow" :grab-cursor="true"
+                :coverflow-effect="{ rotate: 0, stretch: 0, depth: 100, modifier: 2, slideShadows: true }"
                 :centered-slides="true" @slideChange="onSlideChange">
                 <!-- <swiper-slide><img src='../../static/img/1.jpg'></swiper-slide>
         <swiper-slide><img src='../../static/img/2.jpg'></swiper-slide>
@@ -12,8 +13,13 @@
         <swiper-slide><img src='../../static/img/5.jpg'></swiper-slide> -->
                 <swiper-slide>
                     <div class="testmonialB">
+                        <div class="temp1"></div>
                         <div class="content">
-                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="self">
+                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                </p>
+
+                            </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/1.jpg">
@@ -25,8 +31,13 @@
                 </swiper-slide>
                 <swiper-slide>
                     <div class="testmonialB">
+                        <div class="temp1"></div>
                         <div class="content">
-                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="self">
+                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                </p>
+
+                            </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/2.jpg">
@@ -38,8 +49,13 @@
                 </swiper-slide>
                 <swiper-slide>
                     <div class="testmonialB">
+                        <div class="temp1"></div>
                         <div class="content">
-                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="self">
+                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                </p>
+
+                            </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/3.jpg">
@@ -51,8 +67,13 @@
                 </swiper-slide>
                 <swiper-slide>
                     <div class="testmonialB">
+                        <div class="temp1"></div>
                         <div class="content">
-                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="self">
+                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                </p>
+
+                            </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/4.jpg">
@@ -64,8 +85,13 @@
                 </swiper-slide>
                 <swiper-slide>
                     <div class="testmonialB">
+                        <div class="temp1"></div>
                         <div class="content">
-                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="self">
+                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                </p>
+
+                            </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/5.jpg">
@@ -83,7 +109,7 @@
 
 </template>
 <script>
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay ,EffectCoverflow} from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow } from 'swiper';
 import { reactive } from 'vue';
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -109,7 +135,7 @@ export default {
         return {
             onSwiper,
             onSlideChange,
-            modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay,EffectCoverflow],
+            modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectCoverflow],
             coverflow: 'coverflow'
         };
     },
@@ -131,50 +157,75 @@ section {
     background-color: #2b2d2f;
     overflow: hidden;
 }
+
 /* .swiper{
     transform-style: preserve-3d;
 } */
-.swiper-container{
+.swiper-container {
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-.swiper-slide{
+
+.swiper-slide {
     background-position: center;
     background-size: cover;
-    width:320px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    width: 320px;
+    height: 380px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
     filter: blur(4px);
     background: #c1c3c4;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
 }
-.swiper-slide-active{
+
+.swiper-slide-active {
     filter: blur(0px);
     background: #fff;
 }
-.testmonialB{
-    position: relative;
-   
-    padding: 40px;
-    padding-top: 90px;
-    color: #999;
-}
-.testmonialB .details{
-    display: flex;
-    align-items: center;
-    margin-top: 60px;
-    
+
+.temp1 {
+    width: 100%;
+    height: 60px;
 }
 
-.testmonialB .details .imgBx{
+.testmonialB {
+    width: 80%;
+    color: #999;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.self {
+    width: 90%;
+    height: 230px;
+
+}
+
+.testmonialB .details {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+}
+
+.testmonialB .details .imgBx {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     overflow: hidden;
     margin-left: 10px;
 }
-.testmonialB .details .imgBx img{
+
+.testmonialB .details .imgBx img {
     position: absolute;
     top: 0;
     left: 0;
@@ -182,19 +233,22 @@ section {
     height: 100%;
     object-fit: cover;
 }
-.testmonialB .details h3{
+
+.testmonialB .details h3 {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1px;
     color: #2b2d2f;
     line-height: 1.1em;
 }
-.testmonialB .details h3 span{
+
+.testmonialB .details h3 span {
     font-size: 12px;
-    color: rgb(82,79,79);
+    color: rgb(82, 79, 79);
 }
+
 .swiper-container-3d .swiper-slide-shadow-left,
-.swiper-container-3d .swiper-slide-shadow-right{
+.swiper-container-3d .swiper-slide-shadow-right {
     background-image: none;
 }
 </style>
