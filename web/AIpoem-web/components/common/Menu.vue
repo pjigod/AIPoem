@@ -133,6 +133,7 @@ export default {
     display: flex;
     background-color: grey;
     cursor: default;
+
 }
 
 .text {
@@ -151,13 +152,14 @@ export default {
 .storyboard {
     display: flex;
     gap: 40px;
+    width:475px;
 }
 
 .tabbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 25px;
+    font-size: 23px;
     font-family: 'KaiTi'
 }
 
@@ -196,6 +198,7 @@ export default {
     font-size: 19px;
     font-family: KaiTi;
     cursor: pointer;
+    margin-top: 0px;
 }
 
 .register {
@@ -225,15 +228,19 @@ export default {
 .avatar {
     display: flex;
     width: 7%;
+    align-items: center;
+    justify-content: center;
 }
 
 .img {
     border-radius: 50%;
-    border-color: white;
+    height: 50px;
+    width:50px;
+
 }
 
 .logout {
-    width: 20%;
+   
     display: flex;
 }
 

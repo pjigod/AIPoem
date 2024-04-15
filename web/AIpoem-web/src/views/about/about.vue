@@ -1,98 +1,200 @@
 <template>
     <Menu></Menu>
+    <section>
+        <div class="swiper-container">
+            <swiper :modules="modules" :slides-per-view="4" :space-between="50" @swiper="onSwiper" :loop="true" :effect="coverflow"
+                :grab-cursor="true"  :coverflow-effect="{rotate:0,stretch:0,depth:100,modifier:2,slideShadows:true}" 
+                :centered-slides="true" @slideChange="onSlideChange">
+                <!-- <swiper-slide><img src='../../static/img/1.jpg'></swiper-slide>
+        <swiper-slide><img src='../../static/img/2.jpg'></swiper-slide>
+        <swiper-slide><img src='../../static/img/3.jpg'></swiper-slide>
+        <swiper-slide><img src='../../static/img/4.jpg'></swiper-slide>
+        <swiper-slide><img src='../../static/img/5.jpg'></swiper-slide> -->
+                <swiper-slide>
+                    <div class="testmonialB">
+                        <div class="content">
+                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="details">
+                                <div class="imgBx">
+                                    <img src="../../static/img/1.jpg">
+                                </div>
+                                <h3>ryx1</h3><span>AIAIAIAIAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="testmonialB">
+                        <div class="content">
+                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="details">
+                                <div class="imgBx">
+                                    <img src="../../static/img/2.jpg">
+                                </div>
+                                <h3>ryx2</h3><span>AIAIAIAIAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="testmonialB">
+                        <div class="content">
+                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="details">
+                                <div class="imgBx">
+                                    <img src="../../static/img/3.jpg">
+                                </div>
+                                <h3>ryx3</h3><span>AIAIAIAIAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="testmonialB">
+                        <div class="content">
+                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="details">
+                                <div class="imgBx">
+                                    <img src="../../static/img/4.jpg">
+                                </div>
+                                <h3>ryx4</h3><span>AIAIAIAIAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="testmonialB">
+                        <div class="content">
+                            <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx</p>
+                            <div class="details">
+                                <div class="imgBx">
+                                    <img src="../../static/img/5.jpg">
+                                </div>
+                                <h3>ryx5</h3><span>AIAIAIAIAI</span>
+                            </div>
+                        </div>
+                    </div>
+                </swiper-slide>
+
+
+            </swiper>
+        </div>
+    </section>
+
 </template>
-    <script>
-        export default {
-            methods:{
-                navTo(url){
-                    this.$router.push(url)
-                }
-            }
+<script>
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay ,EffectCoverflow} from 'swiper';
+import { reactive } from 'vue';
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+export default {
+    components: {
+        Swiper,
+        SwiperSlide,
+    },
+    setup() {
+
+        const onSwiper = (swiper) => {
+            console.log(swiper);
+        };
+        const onSlideChange = () => {
+            console.log('slide change');
+        };
+        return {
+            onSwiper,
+            onSlideChange,
+            modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay,EffectCoverflow],
+            coverflow: 'coverflow'
+        };
+    },
+    methods: {
+        navTo(url) {
+            this.$router.push(url)
         }
-    </script>
-    <style>
-    .container1{
-        height: 70px;
-        width:100%;
-        display: flex;
-        background-color: grey;
-        cursor: default;
     }
-    .text{
-        height: 100%;
-        width: 25%;
-        display: flex;
-    }
-    .text-content{
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-    .storyboard{
-        display: flex;
-        gap: 40px;
-    }
-    .tabbar{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 25px;
-        font-family:'KaiTi'
-    }
-    .tabbar:hover{
-        color: aliceblue;
-    }
-    .search{
-        display: flex;
-        width: 20%;
-        margin-left: 170px;
-    }
-    .search-text{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .search-input{
-        width: 200px;
-        height: 30px;
-        text-indent: 25px;
-        border-radius: 16px 0 0 16px;
-        border: 0 none;
-        outline:none;
-  
-        
-    }
-    .search-button{
-        border-radius: 0 16px 16px 0;
-        width: 77px;
-        height: 32px;
-        border: 0 none;
-        outline: 0;
-        font-size: 19px;
-        font-family: KaiTi;
-        cursor: pointer;
-    }
-    .register{
-        width: 7%;
-        display: flex;
+}
+</script>
+<style>
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2b2d2f;
+    overflow: hidden;
+}
+/* .swiper{
+    transform-style: preserve-3d;
+} */
+.swiper-container{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.swiper-slide{
+    background-position: center;
+    background-size: cover;
+    width:320px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+    filter: blur(4px);
+    background: #c1c3c4;
+    border-radius: 10px;
+}
+.swiper-slide-active{
+    filter: blur(0px);
+    background: #fff;
+}
+.testmonialB{
+    position: relative;
+   
+    padding: 40px;
+    padding-top: 90px;
+    color: #999;
+}
+.testmonialB .details{
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
     
-    }
-    .register-content{
-        display: flex;
-        align-items: center;
-    
-    }
-    .login{
-        display: flex;
-        width: 7%;
-    
-    }
-    .login-content{
-        display: flex;
-        align-items: center;
-       
-    }
-  
-    
-    </style>
+}
+
+.testmonialB .details .imgBx{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 10px;
+}
+.testmonialB .details .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.testmonialB .details h3{
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #2b2d2f;
+    line-height: 1.1em;
+}
+.testmonialB .details h3 span{
+    font-size: 12px;
+    color: rgb(82,79,79);
+}
+.swiper-container-3d .swiper-slide-shadow-left,
+.swiper-container-3d .swiper-slide-shadow-right{
+    background-image: none;
+}
+</style>
