@@ -80,7 +80,10 @@
         <div class="createpoem">
             <div class="crecontainer">
                 <div class="poemtocre">
-                    <poemGradiant></poemGradiant>
+                    <poemGradiant v-if="ispoem" :poemtext="poem"></poemGradiant>
+                </div>
+                <div class="couplettocre">
+                    <coupletGradiant v-if="iscouplet" :upper="upper" :lower="lower"></coupletGradiant>
                 </div>
                 <div v-if="isload" class="dot-spinner">
                     <div class="dot-spinner__dot"></div>
@@ -100,6 +103,7 @@
 import Menu from '../../../components/common/Menu.vue'
 import { get } from '../../../utils/request'
 import poemGradiant from '../../../components/common/poemGradiant.vue'
+import coupletGradiant from '../../../components/common/coupletGradiant.vue'
 export default {
     data() {
         return {
@@ -112,12 +116,17 @@ export default {
             style: '',
             poem: '',
             tempid: 0,
-            isload:false
+            isload:false,
+            ispoem:false,
+            iscouplet:false,
+            upper:'寿比南山不老松， 松高白鹤楼',
+            lower:'福如东海长流水，水漫金山寺'
 
         }
     },
     components:{
-        poemGradiant
+        poemGradiant,
+        coupletGradiant
     },
     methods: {
         navTo(url) {
@@ -148,6 +157,7 @@ export default {
                             }).then(res => {
                                 this.poem = res.data.data.output
                                 this.isload=false
+                                this.ispoem=true
                             })
                         }, 5000)
                     })
@@ -170,6 +180,8 @@ export default {
                             // console.log(res.data.data.output)
                             this.poem = res.data.data.output
                             this.isload=false
+                            this.iscouplet=true
+
                             // console.log(this.poem)
                         })
                     }, 5000)
@@ -194,6 +206,8 @@ export default {
                             this.poem = res.data.data.output
                             // console.log(this.poem)
                             this.isload=false
+                            this.ispoem=true
+
 
                         })
                     }, 5000)
@@ -218,6 +232,8 @@ export default {
                            
                             this.poem = res.data.data.output
                             this.isload=false
+                            this.ispoem=true
+
 
                             // console.log(this.poem)
                         })
@@ -241,107 +257,6 @@ export default {
 }
 </script>
 <style>
-.temp {
-    width: 100%;
-    height: 5px;
-}
-
-.container1 {
-    height: 70px;
-    width: 100%;
-    display: flex;
-    background-color: grey;
-    cursor: default;
-}
-
-.text {
-    height: 100%;
-    width: 25%;
-    display: flex;
-}
-
-.text-content {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.storyboard {
-    display: flex;
-    gap: 40px;
-}
-
-.tabbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-family: 'KaiTi'
-}
-
-.tabbar:hover {
-    color: aliceblue;
-}
-
-.search {
-    display: flex;
-    width: 20%;
-    margin-left: 170px;
-}
-
-.search-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-input {
-    width: 200px;
-    height: 30px;
-    text-indent: 25px;
-    border-radius: 16px 0 0 16px;
-    border: 0 none;
-    outline: none;
-
-
-}
-
-.search-button {
-    border-radius: 0 16px 16px 0;
-    width: 77px;
-    height: 32px;
-    border: 0 none;
-    outline: 0;
-    font-size: 19px;
-    font-family: KaiTi;
-    cursor: pointer;
-}
-
-.register {
-    width: 7%;
-    display: flex;
-
-}
-
-.register-content {
-    display: flex;
-    align-items: center;
-
-}
-
-.login {
-    display: flex;
-    width: 7%;
-
-}
-
-.login-content {
-    display: flex;
-    align-items: center;
-
-}
-
 .contain2 {
     display: flex;
     width: 100%;
@@ -481,6 +396,10 @@ export default {
     align-items: center;
     justify-content: center;
 }
+/* .poemtocre{
+    width: 315px;
+    
+} */
 .dot-spinner {
   --uib-size: 2.8rem;
   --uib-speed: .9s;

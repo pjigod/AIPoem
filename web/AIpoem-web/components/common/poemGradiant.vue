@@ -1,10 +1,12 @@
 <template>
-    <div class="container3">
-      <p class="text">
-        <span v-for="(char, index) in displayText" :key="index" class="char" :class="{ 'active': index <= currentIndex }">
-          {{ char }}
+    <div class="pmcontainer">
+      
+        <span  v-for="(char, index) in displayText" :key="index" class="char" :class="{ 'active': index <= currentIndex }">
+          {{ char}}
         </span>
-      </p>
+
+
+
     </div>
   </template>
   
@@ -12,10 +14,14 @@
   export default {
     data() {
       return {
-        text: "Hello, World!",
+        text: this.poemtext,
         currentIndex: 0
       };
     },
+    props:[
+      'poemtext'
+    ],
+    
     mounted() {
       this.animateText();
     },
@@ -27,11 +33,12 @@
           } else {
             clearInterval(animationInterval);
           }
-        }, 100);
+        }, 200);
       }
     },
     computed: {
       displayText() {
+        
         return this.text.slice(0, this.currentIndex);
       }
     }
@@ -46,5 +53,14 @@
   
   .char.active {
     opacity: 1;
+    font-size: 50px;
+    font-family: KaiTi;
+    margin: 5px 1px 5px 1px;
+  }
+  .pmcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    width:315px;
+    height: 270px;
   }
   </style>
