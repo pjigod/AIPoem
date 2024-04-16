@@ -1,5 +1,6 @@
 <template>
   <Menu></Menu>
+  <div id="Vuemy">
   <div class="sidebar">
     <nav>
       <ul>
@@ -59,6 +60,7 @@
       <input type="email" id="email" name="email" :value="email"/>
     </div>
   </div>
+</div>
 </template>
 <script>
 import axios from 'axios';
@@ -155,15 +157,16 @@ export default {
 </script>
 <style>
 .infocontainer {
-  background-color: #fff;
+  background-color:rgba(13, 241, 203, 0.014);
   padding: 20px;
   border-radius: 5px;
-  width: 1000px;
+  width: 50%;
   height: 800px;
-  margin-top: 50px;
-  margin-left: 150px;
+  margin-top: 0;
+  margin-left: 10%;
   float: left;
   text-align: center;
+  opacity: 0.6;
 }
 h1 {
   text-align: center;
@@ -206,12 +209,12 @@ h1 {
   background-color: #45a049;
 }
 .sidebar {
-  width: 50px;
+  width: 10%;
   height: 100vh;
-  background-color: #808080;
+  background-color:rgba(13, 241, 203, 0.014);
   padding: 10px;
   float: left;
-  margin-left: 200px;
+  margin-left: 10%;
 }
 .sidebar nav ul {
   list-style-type: none;
@@ -233,11 +236,8 @@ h1 {
   color: #fff;
 }
 .sidebar {
-  width: 200px;
   height: 100vh;
-  background-color: #f2f2f2;
   padding: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .sidebar nav ul {
   list-style-type: none;
@@ -272,14 +272,15 @@ h1 {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  width: 50%;
+  margin-left: 15%;
   float: left;
 }
 h2 {
   text-align: center;
 }
 button {
-  display: block;
+  display: inline-block;
   margin-top: 10px;
   padding: 8px 16px;
   background-color: #007bff;
@@ -291,5 +292,12 @@ button {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+#Vuemy{
+  background: url("../../static/img/my.jpg");
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-size:100% 100%;
 }
 </style>
