@@ -38,15 +38,17 @@
         v-if="imageUrl"
         :src="imageUrl"
         alt="预览区域"
-        style="max-width: 100%; margin-top: 10px"
-      /> 
+        class="AvatarSubmit"
+      />
+      <img v-else :src="photo" class="AvatarSubmit" />
       <button @click="avatarChangeSubmit" :disabled="!imageUrl">上传</button>
     </div>
   </div>
   <div v-else-if="showinfo == 3">我的创作</div>
   <div class="infocontainer" v-else>
     <h1>个人信息</h1>
-    <img :src="photo" class="avatarPerson" />
+    <img v-if=photo :src="photo" class="avatarPerson" />
+    <img v-else src="../../static/img/user.png" class="avatarPerson">
     <div class="form-input">
       <label for="name">用户名:</label>
       <input type="text" id="name" name="name" :value="username" />
@@ -274,6 +276,7 @@ h1 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 50%;
   margin-left: 15%;
+  height:800px;
   float: left;
 }
 h2 {
@@ -299,5 +302,11 @@ button:disabled {
   height:100%;
   position:fixed;
   background-size:100% 100%;
+}
+.AvatarSubmit{
+  border-radius: 50%;
+  margin-top: 10px;
+  width: 300px;
+  height: 300px;
 }
 </style>
