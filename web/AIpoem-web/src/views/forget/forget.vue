@@ -19,7 +19,7 @@
             <button class="sign" @click="passwordChange" type="button">确认</button>
           </form>
           <p class="signup">没有账号?
-		      <a href @click="navTo('/register')">返回登录</a>
+		      <a href @click="navTo('/login')">返回登录</a>
 	</p>
     </div>
   </div>

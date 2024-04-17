@@ -73,6 +73,8 @@ import {get,post,put} from '../../../utils/request'
               console.log(store.state.token);
               this.navTo('/home')
             }
+          }).catch(err=>{
+            alert(err.response.data.message)
           })
         },
         loginByPhone(){
