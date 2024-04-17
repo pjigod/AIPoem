@@ -1,5 +1,5 @@
 <template>
-  <div class="container1">
+  <div class="mcontainer">
     <div class="text">
       <div class="text-content">
         <text style="font-size: 60px; font-family: 'KaiTi'">AI赋诗</text>
@@ -33,20 +33,7 @@
       </div>
     </div>
     <div class="search">
-      <div class="search-text">
-        <input
-          type="text"
-          placeholder="请输入"
-          class="search-input"
-          v-model="searchConnent"
-        />
-        <button
-          class="search-button"
-          @click="navTo('/searchList/' + searchConnent)"
-        >
-          搜索
-        </button>
-      </div>
+      
     </div>
     <div v-if="userinfo" class="avatar">
       <img :src="avatarphoto" class="img" />
@@ -84,7 +71,7 @@ export default {
     return {
       userinfo: this.$store.state.token,
       flag: 0,
-      searchConnent: "",
+     
       avatarphoto: "",
     };
   },
@@ -133,14 +120,19 @@ export default {
 </script>
 <style>
 .white-text {
-  color: aliceblue;
+  color: rgb(141, 138, 116);
+  border-bottom:3px solid #5D6146; 
+  font-weight:bold; line-height:45px;
+   height:43px;
 }
-.container1 {
+.mcontainer {
   height: 70px;
   width: 100%;
   display: flex;
-  background-color: grey;
+  background: rgb(222,218,207);
+background: linear-gradient(62deg, rgba(222,218,207,1) 0%, rgba(141,138,116,1) 100%);
   cursor: default;
+  
 }
 .text {
   height: 100%;
@@ -166,36 +158,13 @@ export default {
   font-family: "KaiTi";
 }
 .tabbar:hover {
-  color: aliceblue;
+  color: rgb(141, 138, 116);
 }
 .search {
   display: flex;
   width: 20%;
 }
-.search-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.search-input {
-  width: 160px;
-  height: 30px;
-  text-indent: 25px;
-  border-radius: 16px 0 0 16px;
-  border: 0 none;
-  outline: none;
-}
-.search-button {
-  border-radius: 0 16px 16px 0;
-  width: 77px;
-  height: 32px;
-  border: 0 none;
-  outline: 0;
-  font-size: 19px;
-  font-family: KaiTi;
-  cursor: pointer;
-  margin-top: 0px;
-}
+
 .register {
   width: 7%;
   display: flex;

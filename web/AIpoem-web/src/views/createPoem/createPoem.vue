@@ -119,8 +119,8 @@ export default {
             isload: false,
             ispoem: false,
             iscouplet: false,
-            upper: '寿比南山不老松， 松高白鹤楼',
-            lower: '福如东海长流水，水漫金山寺'
+            upper: '',
+            lower: ''
 
         }
     },
@@ -182,9 +182,11 @@ export default {
                             // console.log(res)
                             // console.log(res.data.data.output)
                             if (res.data.data.status === 1) {
-                                this.poem = res.data.data.output
+                                // this.poem = res.data.data.output
                                 this.isload = false
                                 this.iscouplet = true
+                                this.upper = this.message2
+                                this.lower = res.data.data.output
                             }
                             // console.log(this.poem)
                         })
@@ -267,6 +269,10 @@ export default {
 .contain2 {
     display: flex;
     width: 100%;
+    background: url(../../static/img/pcbg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 
 }
 
@@ -276,6 +282,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    
 }
 
 .createpoem {

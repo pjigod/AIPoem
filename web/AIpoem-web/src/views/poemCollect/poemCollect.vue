@@ -3,8 +3,8 @@
     <div class="container2">
         <div class="poemList">
             <poem v-for="(item, index) in poemList" :key="index" :pid="item.id" :ctime="item.createTime"
-                :authorId="item.creator.nickname" :type="item.type" :poemtext="item.output" :title="item.prompt" :PuserImgUrl="item.creator.avatar"
-                @click="changeThisPoem(item.id)">
+                :authorId="item.creator.nickname" :type="item.type" :poemtext="item.output" :title="item.prompt"
+                :PuserImgUrl="item.creator.avatar" @click="changeThisPoem(item.id)">
 
             </poem>
             <div class="overlay" v-if="isShow" @click="closeDialog"></div>
@@ -13,7 +13,9 @@
             </poemitem>
 
         </div>
-
+        <div class="pagenav">
+            
+        </div>
 
     </div>
 </template>
@@ -62,8 +64,8 @@ export default {
         }
     },
     created() {
-    this.fetchData();
-  },
+        this.fetchData();
+    },
     methods: {
         navTo(url) {
             this.$router.push(url)
@@ -71,17 +73,17 @@ export default {
         changeThisPoem(f) {
             this.colpoemid = f
             this.isShow = true
-            
+
         },
-        fetchData(){
-            get('/poem/getallcomplete',{
-                pagenum:0,
-                pagesize:20
-            }).then(res=>{
-                this.poemList=res.data.data
+        fetchData() {
+            get('/poem/getallcomplete', {
+                pagenum: 0,
+                pagesize: 20
+            }).then(res => {
+                this.poemList = res.data.data
                 // console.log(this.poemList)
                 // console.log(res)
-                
+
             })
         }
     },
@@ -89,131 +91,41 @@ export default {
         poem,
         poemitem
     },
-    
+
     watch: {
-    isShow(newValue) {
-      if (newValue) {
-        document.body.style.overflow = 'hidden'; // 允许页面滚动
-      } else {
-        document.body.style.overflow = 'auto'; // 禁止页面滚动
-      }
+        isShow(newValue) {
+            if (newValue) {
+                document.body.style.overflow = 'hidden'; // 允许页面滚动
+            } else {
+                document.body.style.overflow = 'auto'; // 禁止页面滚动
+            }
+        }
     }
-  }
 }
 
 </script>
 <style>
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 设置遮罩层的背景颜色和透明度 */
-  z-index: 9999;
-}
-.container1 {
-    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    background-color: grey;
-    cursor: default;
-}
-
-.text {
     height: 100%;
-    width: 25%;
-    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 设置遮罩层的背景颜色和透明度 */
+    z-index: 9999;
 }
 
-.text-content {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.storyboard {
-    display: flex;
-    gap: 40px;
-}
-
-.tabbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-family: KaiTi;
-
-}
-
-.tabbar:hover {
-    color: aliceblue;
-}
-
-.search {
-    display: flex;
-    width: 20%;
-    margin-left: 100px;
-}
-
-.search-text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-input {
-    width: 200px;
-    height: 30px;
-    text-indent: 25px;
-    border-radius: 16px 0 0 16px;
-    border: 0 none;
-    outline: none;
-
-
-}
-
-.search-button {
-    border-radius: 0 16px 16px 0;
-    width: 77px;
-    height: 32px;
-    border: 0 none;
-    outline: 0;
-    font-size: 19px;
-    font-family: KaiTi;
-    cursor: pointer;
-}
-
-.register {
-    width: 7%;
-    display: flex;
-
-}
-
-.register-content {
-    display: flex;
-    align-items: center;
-
-}
-
-.login {
-    display: flex;
-    width: 7%;
-
-}
-
-.login-content {
-    display: flex;
-    align-items: center;
-
-}
 
 .container2 {
     width: 100%;
     justify-content: center;
     display: flex;
-    margin-top: 40px;
+    padding-top: 40px;
+    background: url(../../static/img/pcbg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .poemList {
