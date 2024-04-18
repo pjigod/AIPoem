@@ -13,8 +13,16 @@
             </poemitem>
 
         </div>
-        <div class="pagenav">
-            
+        <div class="pagination">
+            <div class="pre-button">
+                <button class="button1" v-if="page != 0" @click="gopre">上一页</button>
+            </div>
+            <div class="next-button">
+                <button class="button1" style="justify-content: flex-end;
+    background: linear-gradient(62deg, rgba(141, 138, 116, 1) 0%,rgba(222, 218, 207, 1)  100%);
+                " @click="gonext">下一页</button>
+
+            </div>
         </div>
 
     </div>
@@ -27,44 +35,17 @@ export default {
     data() {
         return {
             poemList: [],
-            //     {
-            //         pid: 1,
-            //         ctime: '2024-3-26',
-            //         authorId: 'wcf',
-            //         type: "duilian",
-            //         poemtext: "少小离家老大回,少小离家老大回。少小离家老大回,少小离家老大回。",
-            //         title: "回乡偶书"
-            //     },
-            //     {
-            //         pid: 10,
-            //         ctime: '2024-3-27',
-            //         authorId: 'wcf1',
-            //         type: "duilian",
-            //         poemtext: "少小离家老大回,少小离家老大回。少小离家老大回,少小离家老大回。",
-            //         title: "回乡偶书"
-            //     }, {
-            //         pid: 3,
-            //         ctime: '2024-3-28',
-            //         authorId: 'wcf2',
-            //         type: "duilian",
-            //         poemtext: "少小离家老大回,少小离家老大回。少小离家老大回,少小离家老大回。",
-            //         title: "回乡偶书"
-            //     },
-            //     {
-            //         pid: 4,
-            //         ctime: '2024-3-29',
-            //         authorId: 'wcf3',
-            //         type: "duilian",
-            //         poemtext: "少小离家老大回,少小离家老大回。少小离家老大回,少小离家老大回。",
-            //         title: "回乡偶书"
-            //     }
-            // ],
+            page: this.$route.params.pagenum,
             colpoemid: 0,
             isShow: false
         }
     },
-    created() {
-        this.fetchData();
+    async created() {
+        this.fetchData(this.$route.params.pagenum);
+        this.$watch(
+            () => this.$route.params.pagenum, this.fetchData
+
+        )
     },
     methods: {
         navTo(url) {
@@ -75,16 +56,33 @@ export default {
             this.isShow = true
 
         },
-        fetchData() {
+        fetchData(data) {
             get('/poem/getallcomplete', {
-                pagenum: 0,
+                pagenum: data,
                 pagesize: 20
             }).then(res => {
                 this.poemList = res.data.data
-                // console.log(this.poemList)
+                window.scrollTo({
+                    top: 0,
+                    behavior:'smooth', // 可选，平滑滚动
+                });
+                // console.log(this.$route.params.pagenum)
+                // console.log(parseInt(this.page))
                 // console.log(res)
 
             })
+        },
+        gonext() {
+            const url = parseInt(this.page) + 1
+            this.navTo('/poemCollect/' + url)
+            this.page = parseInt(this.page) + 1
+
+
+        },
+        gopre() {
+            const url = parseInt(this.page) - 1
+            this.navTo('/poemCollect/' + url)
+            this.page = parseInt(this.page) - 1
         }
     },
     components: {
@@ -99,7 +97,11 @@ export default {
             } else {
                 document.body.style.overflow = 'auto'; // 禁止页面滚动
             }
-        }
+        },
+        // $route(to,form){
+        //      this.fetchData();
+        //     window.location.reload
+        // }
     }
 }
 
@@ -121,11 +123,14 @@ export default {
     width: 100%;
     justify-content: center;
     display: flex;
+    flex-wrap: wrap;
     padding-top: 40px;
     background: url(../../static/img/pcbg.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding-bottom: 40px;
+
 }
 
 .poemList {
@@ -133,5 +138,38 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 55px;
+}
+
+.pagination {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+}
+
+.pagination .button1 {
+    display: flex;
+    align-items: center;
+    background: rgb(222, 218, 207);
+    background: linear-gradient(62deg, rgba(222, 218, 207, 1) 0%, rgba(141, 138, 116, 1) 100%);
+    padding: 20px;
+    height: 60%;
+    width: 200px;
+    font-size: 25px;
+    font-family: KaiTi;
+    color: black;
+}
+
+.next-button {
+    display: flex;
+    justify-content: center;
+}
+
+.pre-button {
+    display: flex;
+    justify-content: center;
 }
 </style>

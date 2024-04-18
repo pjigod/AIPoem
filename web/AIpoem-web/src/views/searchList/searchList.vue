@@ -1,7 +1,7 @@
 <template>
 
     <div class="search-form">
-        <input type="text" id="search" class="search" @input="search" v-model="key" :placeholder="myPlaceholder" style="font-family: KaiTi;" />
+        <input type="text" id="search" class="search" @input="search" v-model="myPlaceholder"  style="font-family: KaiTi;" />
         <ul class="suggestions" v-show="searchPoemList.length">
             <li v-for="(item, index) in searchPoemList" :key="index">
                 <span class="poet" v-html="item.output" style="font-size: 19px;"></span>
@@ -21,14 +21,14 @@ export default {
     data() {
         return {
             searchPoemList: [],
-            key: "",
+            
             myPlaceholder:this.$route.params.searchConnent
         }
     },
     methods: {
         fetchSearchData() {
             get('/poem/search', {
-                key: this.$route.params.searchConnent
+                key: this.myPlaceholder
             }).then(res => {
                 this.searchPoemList = res.data.data
                 //console.log(this.searchPoemList)
@@ -39,6 +39,10 @@ export default {
     },
     created() {
         this.fetchSearchData();
+        this.$watch(
+            () => this.myPlaceholder, this.fetchSearchData
+
+        )
     },
 
 

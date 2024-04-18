@@ -137,6 +137,10 @@ export default {
             // console.log(this.flag)
         },
         createpoem() {
+          if(this.flag===0){
+            alert("请先选择生成类型")
+          }  
+          else{
             this.isload = true
             if (this.flag === 1) {
                 this.tag = 'poem'
@@ -253,6 +257,8 @@ export default {
                     console.log(err)
                 })
             }
+          }
+          
 
         }
     },
@@ -273,7 +279,7 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-
+    
 }
 
 .selectpoem {

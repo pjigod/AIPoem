@@ -8,32 +8,27 @@
     <div class="storyboard">
       <div id="home" class="tabbar" @click="navTo('/home')">
         <text @click="changeFlag(1)" :class="{ 'white-text': flag === 1 }">
-          首页</text
-        >
+          首页</text>
       </div>
       <div id="create" class="tabbar" @click="navTo('/createPoem')">
         <text @click="changeFlag(2)" :class="{ 'white-text': flag === 2 }">
-          创作</text
-        >
+          创作</text>
       </div>
-      <div id="collection" class="tabbar" @click="navTo('/poemCollect')">
+      <div id="collection" class="tabbar" @click="navTo('/poemCollect/0')">
         <text @click="changeFlag(3)" :class="{ 'white-text': flag === 3 }">
-          诗廊</text
-        >
+          诗廊</text>
       </div>
       <div id="my" class="tabbar" @click="navTo('/my')">
         <text @click="changeFlag(4)" :class="{ 'white-text': flag === 4 }">
-          我的</text
-        >
+          我的</text>
       </div>
       <div id="about" class="tabbar" @click="navTo('/about')">
         <text @click="changeFlag(5)" :class="{ 'white-text': flag === 5 }">
-          关于</text
-        >
+          关于</text>
       </div>
     </div>
     <div class="search">
-      
+
     </div>
     <div v-if="userinfo" class="avatar">
       <img :src="avatarphoto" class="img" />
@@ -71,7 +66,7 @@ export default {
     return {
       userinfo: this.$store.state.token,
       flag: 0,
-     
+
       avatarphoto: "",
     };
   },
@@ -105,7 +100,7 @@ export default {
     if (this.currentPage === "/createPoem") {
       this.flag = 2;
     }
-    if (this.currentPage === "/poemCollect") {
+    if (this.currentPage === "/poemCollect/0") {
       this.flag = 3;
     }
     if (this.currentPage === "/my") {
@@ -121,35 +116,41 @@ export default {
 <style>
 .white-text {
   color: rgb(141, 138, 116);
-  border-bottom:3px solid #5D6146; 
-  font-weight:bold; line-height:45px;
-   height:43px;
+  border-bottom: 3px solid #5D6146;
+  font-weight: bold;
+  line-height: 45px;
+  height: 43px;
 }
+
 .mcontainer {
   height: 70px;
   width: 100%;
   display: flex;
-  background: rgb(222,218,207);
-background: linear-gradient(62deg, rgba(222,218,207,1) 0%, rgba(141,138,116,1) 100%);
+  background: rgb(222, 218, 207);
+  background: linear-gradient(62deg, rgba(222, 218, 207, 1) 0%, rgba(141, 138, 116, 1) 100%);
   cursor: default;
-  
+
 }
+
 .text {
   height: 100%;
   width: 25%;
   display: flex;
 }
+
 .text-content {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
 }
+
 .storyboard {
   display: flex;
   gap: 40px;
   width: 475px;
 }
+
 .tabbar {
   display: flex;
   align-items: center;
@@ -157,9 +158,11 @@ background: linear-gradient(62deg, rgba(222,218,207,1) 0%, rgba(141,138,116,1) 1
   font-size: 23px;
   font-family: "KaiTi";
 }
+
 .tabbar:hover {
   color: rgb(141, 138, 116);
 }
+
 .search {
   display: flex;
   width: 20%;
@@ -169,33 +172,40 @@ background: linear-gradient(62deg, rgba(222,218,207,1) 0%, rgba(141,138,116,1) 1
   width: 7%;
   display: flex;
 }
+
 .register-content {
   display: flex;
   align-items: center;
 }
+
 .login {
   display: flex;
   width: 7%;
 }
+
 .login-content {
   display: flex;
   align-items: center;
 }
+
 .avatar {
   display: flex;
   width: 7%;
   align-items: center;
   justify-content: center;
 }
+
 .img {
   border-radius: 50%;
   height: 50px;
   width: 50px;
   margin-left: 5%;
 }
+
 .logout {
   display: flex;
 }
+
 .button {
   background-color: rgb(138, 60, 60);
   width: 100px;

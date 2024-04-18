@@ -7,7 +7,7 @@
                 </div>
                 <div class="mid-search">
                     <div class="search-text">
-                        <input type="text" class="search-input" v-model="searchConnent" />
+                        <input type="text" class="search-input" v-model="searchConnent" @keyup.enter="navTo('/searchList/' + searchConnent)" />
                         <button class="search-button" @click="navTo('/searchList/' + searchConnent)">
                             搜索
                         </button>

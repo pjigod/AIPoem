@@ -52,9 +52,11 @@ const router = createRouter({
       component: forget
     },
     {
-      path: '/poemCollect',
+      path: '/poemCollect/:pagenum',
       name: 'poemCollect',
-      component: poemCollect
+      component: poemCollect,
+
+      // props:(route)=>({pagenum:route.params.pagenum||'0'})
     },
     {
       path:'/searchList/:searchConnent',
