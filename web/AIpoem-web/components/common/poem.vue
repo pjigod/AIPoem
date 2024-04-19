@@ -1,12 +1,17 @@
 <template>
-<!-- 单个诗组件 -->
-    <div class="picontainer" >
-        <div class="title">
-            {{ title }}
+    <!-- 单个诗组件 -->
+    <div class="picontainer">
+        <div class="tofitbg">
+            <div class="title">
+                {{ title }}
+            </div>
+            <div class="poemtext">
+                <div v-for="(line, index) in lines" :key="index" class="line">
+                    {{ line }}
+                </div>
+            </div>
         </div>
-        <div class="poemtext">
-            {{ poemtext }}
-        </div>
+
         <div class="containerl">
             <div class="poemtype">
 
@@ -15,7 +20,7 @@
             <div class="container3">
                 <div class="author">
                     <div class="author-img">
-                        <img :src=imgUrl style="height: 30px;width: 30px; border-radius: 50%;" >
+                        <img :src=imgUrl style="height: 30px;width: 30px; border-radius: 50%;">
                     </div>
                     <div class="author-id" style="margin-left: 8px;">
                         <text>{{ authorId }}</text>
@@ -26,13 +31,13 @@
                 </div> -->
                 <div class="time1">
                     <div class="time-img">
-                     <img src="../../src/static/img/calendar.png" style="height: 30px;width: 30px;">
+                        <img src="../../src/static/img/calendar.png" style="height: 30px;width: 30px;">
                     </div>
                     <div class="time-text">
                         <text>{{ ctime }}</text>
                     </div>
                 </div>
-             
+
             </div>
         </div>
         <div class="gap2"></div>
@@ -40,38 +45,52 @@
 </template>
 
 <script>
-    export default{
-        data (){
-            return{
-                imgUrl:''
-            }
-        },
-        methods:{
-            navTo(url){
-                    this.$router.push(url)
-                   
-                }
-        },
-        mounted(){
-			this.imgUrl = 'http://124.221.53.69:8080/photo/get?url=' + this.PuserImgUrl;
+export default {
+    data() {
+        return {
+            imgUrl: '',
+            tlines:[],
+            lines:[],
+            sanitizedLines:[]
+        }
+    },
+    methods: {
+        navTo(url) {
+            this.$router.push(url)
 
-        },
-        props:[
-            'pid',
-            'ctime',
-            'authorId',
-            'type',
-            'poemtext',
-            'title',
-            'PuserImgUrl'
-        ],
+        }
+    },
+    mounted() {
+        this.imgUrl = 'http://124.221.53.69:8080/photo/get?url=' + this.PuserImgUrl;
+        this.tlines = this.poemtext.split('\n');
+        this.sanitizedLines = this.tlines.map(line => line.replace(/[，。]/g, '')); // 移除逗号和句号
+        this.lines=this.sanitizedLines.filter(line => line.trim() !== '')
+         console.log(this.sanitizedLines)
+    },
 
-
+    props: [
+        'pid',
+        'ctime',
+        'authorId',
+        'type',
+        'poemtext',
+        'title',
+        'PuserImgUrl'
+    ],
+    computed: {
+        poemLines() {
+            //console.log(this.poemtext)
+            // const lines = this.poemtext.split('\n');
+            // return lines
+        }
     }
+
+
+}
 </script>
 
 <style>
-.picontainer{
+.picontainer {
     height: 350px;
     width: 420px;
     background-color: #EBECED;
@@ -80,85 +99,111 @@
     background: url(../../src/static/img/pbg1.jpg);
     background-size: 100% 100%;
 }
+
 .picontainer:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 10px rgb(229, 229, 229);
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px rgb(229, 229, 229);
 }
-.title{
-    width: 100%;
-    height: 40px;  
+
+.tofitbg {
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+.title {
+    width: 25px;
+    height: 250px;
+    display: flex;
+    align-items: center;
     font-size: 25px;
     font-family: KaiTi
 }
-.poemtext{
-    height: 210px;
-    width: 100%;
+
+.poemtext {
+    height: 250px;
+    margin-right: 25px;
     font-size: 27px;
     font-family: KaiTi;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
-
-.containerl{
+.line{
+    height: 100%;
+    font-size: 25px;
+    width: 25px;
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+}
+.containerl {
     width: 100%;
     height: 90px;
 
 }
-.poemtype{
+
+.poemtype {
     width: 100%;
     height: 30px;
 }
-.gap{
+
+.gap {
     width: 100%;
     height: 20px;
 }
-.container3{
+
+.container3 {
     width: 100%;
     height: 40px;
     display: flex;
 
 }
-.author{
+
+.author {
     height: 100%;
     width: 40%;
     display: flex;
 }
-.author-img{
+
+.author-img {
     margin-left: 10px;
     height: 100%;
     display: flex;
     align-items: center;
 }
-.author-id{
+
+.author-id {
     display: flex;
     align-items: center;
     height: 100%;
 }
-.time1{
+
+.time1 {
     height: 100%;
     width: 50%;
     display: flex;
 }
-.time-img{
+
+.time-img {
     height: 100%;
     display: flex;
     align-items: center;
 }
-.time-text{
+
+.time-text {
     display: flex;
     align-items: center;
     height: 100%;
 }
-.download{
+
+.download {
     height: 100%;
     width: 10%;
     display: flex;
     align-items: center;
 
 }
-.gap2{
+
+.gap2 {
     width: 100%;
     height: 10px;
 }
