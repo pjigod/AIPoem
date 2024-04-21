@@ -1,7 +1,7 @@
 <template>
     <div id="building">
         <div class="form-container">
-        <p class="title">注册</p>
+        <p class="title1">注册</p>
         <form class="form">
             <div class="input-group">
                 <label for="username">用户名</label>
@@ -79,7 +79,7 @@ import axios from 'axios'
       opacity: 0.6;
     }
     
-    .title {
+    .title1 {
       text-align: center;
       font-size: 1.5rem;
       line-height: 2rem;

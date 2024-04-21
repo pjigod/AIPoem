@@ -1,7 +1,7 @@
 <template>
     <div id="building">
       <div class="form-container">
-        <p class="title">忘记密码</p>
+        <p class="title1">忘记密码</p>
         <form class="form">
             <div class="input-group">
                 <label for="username">用户名</label>
@@ -74,7 +74,7 @@ import {get, post} from '../../../utils/request'
       opacity: 0.6;
     }
     
-    .title {
+    .title1 {
       text-align: center;
       font-size: 1.5rem;
       line-height: 2rem;
