@@ -52,7 +52,7 @@
             accept="image/*"
             class="inputfile"
           />
-          <button @click="avatarChangeSubmit" :disabled="!imageUrl">
+          <button class="button-my" @click="avatarChangeSubmit" :disabled="!imageUrl">
             上传
           </button>
         </div>
@@ -303,7 +303,7 @@ h1 {
 h2 {
   text-align: center;
 }
-button {
+.button-my {
   margin-top: 10px;
   padding: 8px 16px;
   background-color: #007bff;
@@ -313,7 +313,7 @@ button {
   cursor: pointer;
   display: inline-block;
 }
-button:disabled {
+.button-my:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }

@@ -161,6 +161,7 @@ export default {
 
 .tabbar:hover {
   color: rgb(141, 138, 116);
+  cursor: pointer;
 }
 
 .search {
@@ -176,6 +177,7 @@ export default {
 .register-content {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .login {
@@ -186,6 +188,7 @@ export default {
 .login-content {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .avatar {

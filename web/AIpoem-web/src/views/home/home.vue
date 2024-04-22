@@ -254,19 +254,19 @@ export default {
 }
 
 .hcontainer .section:nth-child(1) {
-  background: url(../../static/img/bg4.png);
+  background: url(../../static/img/bg1.jpg);
   background-size: 100% 100%;
   background-attachment: fixed;
 }
 
 .hcontainer .section:nth-child(2) {
-  background: url(../../static/img/bg1.jpg);
+  background: url(../../static/img/bg2.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
 
 .hcontainer .section:nth-child(3) {
-  background: url(../../static/img/bg2.jpg);
+  background: url(../../static/img/bg3.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
