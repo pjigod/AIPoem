@@ -65,7 +65,7 @@ export default {
         this.tlines = this.poemtext.split('\n');
         this.sanitizedLines = this.tlines.map(line => line.replace(/[，。]/g, '')); // 移除逗号和句号
         this.lines=this.sanitizedLines.filter(line => line.trim() !== '')
-         console.log(this.sanitizedLines)
+        // console.log(this.sanitizedLines)
     },
 
     props: [
@@ -77,11 +77,12 @@ export default {
         'title',
         'PuserImgUrl'
     ],
-    computed: {
-        poemLines() {
-            //console.log(this.poemtext)
-            // const lines = this.poemtext.split('\n');
-            // return lines
+    watch:{
+        poemtext(newValue){
+            this.tlines = newValue.split('\n');
+            this.sanitizedLines = this.tlines.map(line => line.replace(/[，。]/g, '')); // 移除逗号和句号
+            this.lines = this.sanitizedLines.filter(line => line.trim() !== '')
+            //console.log(this.lines)
         }
     }
 

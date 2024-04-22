@@ -40,21 +40,28 @@
                             藏头诗
                         </label>
                     </div>
+                    <div class="radio-button">
+                        <input name="radio-group" id="radio5" class="radio-button__input" type="radio"
+                            @change="changeFlag(5)">
+                        <label for="radio5" class="radio-button__label">
+                            <span class="radio-button__custom"></span>
+
+                            宋词
+                        </label>
+                    </div>
                 </div>
                 <div class="poem-container" style="font-size: 20px;font-family: KaiTi;">
-                    <div class="poem" >诗歌</div>
-                    <div class="poem-temp" >请输入关键词:</div>
+                    <div class="poem">诗歌</div>
+                    <div class="poem-temp">请输入关键词:</div>
                     <input :disabled="flag !== 1" v-model="message1" class="tinput">
-                    <div class="poem-temp" >请确认行数和诗长:</div>
-                    <input :disabled="flag !== 1" class="tinput">
-                    <input :disabled="flag !== 1" type="radio" name="poem-radio">5
-                    <input :disabled="flag !== 1" type="radio" name="poem-radio">7
+                    <div class="poem-temp">请确认行数:</div>
+                    <input :disabled="flag !== 1" class="tinput" v-model="rownum">
                 </div>
                 <div class="temp"></div>
                 <div class="couple-container" style="font-size: 20px;font-family: KaiTi;">
                     <div class="couple-text">对联</div>
-                    <div class="couple-temp" >请输入上联:</div>
-                    <input :disabled="flag !== 2" v-model="message2" class="tinput"> 
+                    <div class="couple-temp">请输入上联:</div>
+                    <input :disabled="flag !== 2" v-model="message2" class="tinput">
                 </div>
                 <div class="temp"></div>
 
@@ -72,8 +79,13 @@
                     <div class="couple-temp">请输入头字:</div>
                     <input :disabled="flag !== 4" v-model="message4" class="tinput">
                 </div>
+                <div class="head-container" style="font-size: 20px;font-family: KaiTi;">
+                    <div class="couple-text">宋词</div>
+                    <div class="couple-temp">请输入词头:</div>
+                    <input :disabled="flag !== 5" v-model="message5" class="tinput">
+                </div>
                 <div class="cometrue-button">
-                    <button @click="createpoem" >开始生成</button>
+                    <button @click="createpoem" :disabled="iscreate">开始生成</button>
                 </div>
             </div>
         </div>
@@ -85,6 +97,7 @@
                 <div class="couplettocre">
                     <coupletGradiant v-if="iscouplet" :upper="upper" :lower="lower"></coupletGradiant>
                 </div>
+
                 <div v-if="isload" class="dot-spinner">
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
@@ -95,8 +108,14 @@
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
                 </div>
+                <div class="pushbut" v-if="ispoem || iscouplet">
+
+                    <img src="../../static/img/upload.png" style="height: 35px;width: 35px;" @click="pushPoem(tempid)">
+                </div>
             </div>
+
         </div>
+
     </div>
 </template>
 <script>
@@ -109,9 +128,11 @@ export default {
         return {
             flag: 0,
             message1: '',
+            rownum: '',
             message2: '',
             message3: '',
             message4: '',
+            message5: '',
             tag: '',
             style: '',
             poem: '',
@@ -120,7 +141,8 @@ export default {
             ispoem: false,
             iscouplet: false,
             upper: '',
-            lower: ''
+            lower: '',
+            iscreate: false
 
         }
     },
@@ -129,12 +151,57 @@ export default {
         coupletGradiant
     },
     methods: {
+        pushPoem(pid) {
+            get('/poem/push', {
+                id: pid
+            }).then(res => {
+                if (res.data.message === 'success') {
+                    alert("成功推送至诗廊")
+                    this.isload = false
+                    this.ispoem = false
+
+                    this.iscouplet = false
+                    this.iscreate = false
+
+                }
+            })
+        },
         navTo(url) {
             this.$router.push(url)
         },
         changeFlag(f) {
             this.flag = f
-            // console.log(this.flag)
+            if(f===1){
+                this.message2=''
+                this.message3=''
+                this.message4=''
+                this.message5=''
+            }
+            if(f===2){
+                this.message1=''
+                this.message3=''
+                this.message4=''
+                this.message5=''
+            }
+            if(f===3){
+                this.message2=''
+                this.message1=''
+                this.message4=''
+                this.message5=''
+            }
+            if(f===4){
+                this.message2=''
+                this.message3=''
+                this.message1=''
+                this.message5=''
+            }
+            if(f===5){
+                this.message2=''
+                this.message3=''
+                this.message4=''
+                this.message1=''
+            }
+            //  console.log(this.flag)
         },
         createpoem() {
             if (this.flag === 0) {
@@ -142,33 +209,39 @@ export default {
             }
             else {
                 this.isload = true
+                this.iscreate = true
+                this.ispoem=false
+                this.iscouplet=false
                 if (this.flag === 1) {
                     this.tag = 'poem'
                     get('/poem/create', {
                         message: this.message1,
                         tag: this.tag,
-                        style: this.style
+                        style: this.style,
+                        rownum:this.rownum
                     }).then(res => {
                         console.log(res)
-                        get('/poem/get', {
-                            id: res.data
-                        }).then(res => {
-                            console.log(res.data.output)
-                            this.tempid = res.data.data
-                            setTimeout(() => {
-                                get('/poem/get', {
-                                    id: this.tempid
-                                }).then(res => {
-                                    if (res.data.data.status === 1) {
-                                        this.poem = res.data.data.output
-                                        this.isload = false
-                                        this.ispoem = true
-                                    }
+                        this.tempid = res.data.data
+                        setTimeout(() => {
+                            get('/poem/get', {
+                                id: this.tempid
+                            }).then(res => {
+                                // console.log(res)
+                                // console.log(res.data.data.output)
+                                if (res.data.data.status === 1) {
+                                    this.poem = res.data.data.output
+                                    this.isload = false
+                                    this.ispoem = true
+                                    this.iscouplet = false
+                                    this.iscreate = false
+                                }
 
-                                })
-                            }, 5000)
-                        })
+
+                            })
+                        }, 8000)
+
                     })
+
                 }
                 if (this.flag === 2) {
                     this.tag = 'couplet'
@@ -183,18 +256,20 @@ export default {
                             get('/poem/get', {
                                 id: this.tempid
                             }).then(res => {
-                                // console.log(res)
+                                //console.log(res)
                                 // console.log(res.data.data.output)
                                 if (res.data.data.status === 1) {
                                     // this.poem = res.data.data.output
                                     this.isload = false
                                     this.iscouplet = true
+                                    this.ispoem = false
                                     this.upper = this.message2
                                     this.lower = res.data.data.output
+                                    this.iscreate = false
                                 }
                                 // console.log(this.poem)
                             })
-                        }, 5000)
+                        }, 8000)
 
                     })
                 }
@@ -211,17 +286,19 @@ export default {
                             get('/poem/get', {
                                 id: this.tempid
                             }).then(res => {
-                                // console.log(res)
+                                 console.log(res)
                                 // console.log(res.data.data.output)
                                 if (res.data.data.status === 1) {
                                     this.poem = res.data.data.output
                                     this.isload = false
                                     this.ispoem = true
+                                    this.iscouplet = false
+                                    this.iscreate = false
                                 }
 
 
                             })
-                        }, 5000)
+                        }, 8000)
 
                     })
                 }
@@ -245,16 +322,47 @@ export default {
                                     this.poem = res.data.data.output
                                     this.isload = false
                                     this.ispoem = true
+                                    this.iscouplet = false
+                                    this.iscreate = false
                                 }
 
 
                                 // console.log(this.poem)
                             })
-                        }, 5000)
+                        }, 8000)
 
 
                     }).error(err => {
                         console.log(err)
+                    })
+                }
+                if (this.flag === 5) {
+                    this.tag = 'songci'
+                    get('/poem/create', {
+                        message: this.message5,
+                        tag: this.tag,
+                        style: this.style
+                    }).then(res => {
+                        console.log(res)
+                        this.tempid = res.data.data
+                        setTimeout(() => {
+                            get('/poem/get', {
+                                id: this.tempid
+                            }).then(res => {
+                                // console.log(res)
+                                // console.log(res.data.data.output)
+                                if (res.data.data.status === 1) {
+                                    this.poem = res.data.data.output
+                                    this.isload = false
+                                    this.ispoem = true
+                                    this.iscouplet = false
+                                    this.iscreate = false
+                                }
+
+
+                            })
+                        }, 8000)
+
                     })
                 }
             }
@@ -284,7 +392,7 @@ export default {
 
 .selectpoem {
     width: 50%;
-    height: 680px;
+    height: 880px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -294,7 +402,7 @@ export default {
 
 .createpoem {
     width: 50%;
-    height: 680px;
+    height: 880px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -303,7 +411,7 @@ export default {
 
 .selcontainer {
     width: 70%;
-    height: 640px;
+    height: 740px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 5px;
     justify-content: center;
@@ -316,12 +424,12 @@ export default {
     font-size: 15px;
     font-family: KaiTi;
     border-radius: 3px;
-    border:2px solid rgb(124, 129, 98) ;
+    border: 2px solid rgb(124, 129, 98);
 }
 
 .crecontainer {
     width: 70%;
-    height: 640px;
+    height: 740px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 5px;
     display: flex;
@@ -534,5 +642,11 @@ export default {
         transform: scale(1);
         opacity: 1;
     }
+}
+
+.pushbut {
+    margin-bottom: auto;
+
+
 }
 </style>

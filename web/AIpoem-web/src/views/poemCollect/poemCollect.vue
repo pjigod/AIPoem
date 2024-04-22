@@ -18,7 +18,7 @@
                 <button class="button1" v-if="page != 0" @click="gopre">上一页</button>
             </div>
             <div class="next-button">
-                <button class="button1" style="justify-content: flex-end;
+                <button class="button1" v-if="nextIsShow" style="justify-content: flex-end;
     background: linear-gradient(62deg, rgba(141, 138, 116, 1) 0%,rgba(222, 218, 207, 1)  100%);
                 " @click="gonext">下一页</button>
 
@@ -37,7 +37,8 @@ export default {
             poemList: [],
             page: this.$route.params.pagenum,
             colpoemid: 0,
-            isShow: false
+            isShow: false,
+            nextIsShow:true
         }
     },
     async created() {
@@ -66,6 +67,10 @@ export default {
                     top: 0,
                     behavior:'smooth', // 可选，平滑滚动
                 });
+                this.nextIsShow=true
+                if(this.poemList.length!=20){
+                    this.nextIsShow=false
+                }
                 // console.log(this.$route.params.pagenum)
                 // console.log(parseInt(this.page))
                 // console.log(res)
@@ -98,6 +103,7 @@ export default {
                 document.body.style.overflow = 'auto'; // 禁止页面滚动
             }
         },
+
         // $route(to,form){
         //      this.fetchData();
         //     window.location.reload

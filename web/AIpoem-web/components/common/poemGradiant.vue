@@ -60,7 +60,7 @@
   .pmcontainer{
     display: flex;
     flex-wrap: wrap;
-    width:315px;
-    height: 270px;
+    width:330px;
+    /* height: 270px; */
   }
   </style>
