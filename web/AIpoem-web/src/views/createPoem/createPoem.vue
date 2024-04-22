@@ -85,7 +85,8 @@
                     <input :disabled="flag !== 5" v-model="message5" class="tinput">
                 </div>
                 <div class="cometrue-button">
-                    <button @click="createpoem" :disabled="iscreate">开始生成</button>
+                    <button @click="createpoem" :disabled="iscreate"
+                        style="height: 30px;background-color: rgb(140, 220, 254);border: none;border-radius:5px; ">开始生成</button>
                 </div>
             </div>
         </div>
@@ -110,7 +111,10 @@
                 </div>
                 <div class="pushbut" v-if="ispoem || iscouplet">
 
-                    <img src="../../static/img/upload.png" style="height: 35px;width: 35px;" @click="pushPoem(tempid)">
+                    <img src="../../static/img/upload.png" style="height: 35px;width: 35px;margin-right: 8px;"
+                        @click="pushPoem(tempid)">
+                    <img src="../../static/img/delete.png" style="height: 35px;width: 35px;" @click="deletepoem()">
+
                 </div>
             </div>
 
@@ -138,7 +142,7 @@ export default {
             poem: '',
             tempid: 0,
             isload: false,
-            ispoem: false,
+            ispoem: true,
             iscouplet: false,
             upper: '',
             lower: '',
@@ -151,6 +155,14 @@ export default {
         coupletGradiant
     },
     methods: {
+        deletepoem() {
+            alert("删除成功")
+           //console.log(1)
+            this.isload = false
+            this.ispoem = false
+            this.iscouplet = false
+            this.iscreate = false
+        },
         pushPoem(pid) {
             get('/poem/push', {
                 id: pid
@@ -159,7 +171,6 @@ export default {
                     alert("成功推送至诗廊")
                     this.isload = false
                     this.ispoem = false
-
                     this.iscouplet = false
                     this.iscreate = false
 
@@ -171,35 +182,35 @@ export default {
         },
         changeFlag(f) {
             this.flag = f
-            if(f===1){
-                this.message2=''
-                this.message3=''
-                this.message4=''
-                this.message5=''
+            if (f === 1) {
+                this.message2 = ''
+                this.message3 = ''
+                this.message4 = ''
+                this.message5 = ''
             }
-            if(f===2){
-                this.message1=''
-                this.message3=''
-                this.message4=''
-                this.message5=''
+            if (f === 2) {
+                this.message1 = ''
+                this.message3 = ''
+                this.message4 = ''
+                this.message5 = ''
             }
-            if(f===3){
-                this.message2=''
-                this.message1=''
-                this.message4=''
-                this.message5=''
+            if (f === 3) {
+                this.message2 = ''
+                this.message1 = ''
+                this.message4 = ''
+                this.message5 = ''
             }
-            if(f===4){
-                this.message2=''
-                this.message3=''
-                this.message1=''
-                this.message5=''
+            if (f === 4) {
+                this.message2 = ''
+                this.message3 = ''
+                this.message1 = ''
+                this.message5 = ''
             }
-            if(f===5){
-                this.message2=''
-                this.message3=''
-                this.message4=''
-                this.message1=''
+            if (f === 5) {
+                this.message2 = ''
+                this.message3 = ''
+                this.message4 = ''
+                this.message1 = ''
             }
             //  console.log(this.flag)
         },
@@ -210,15 +221,15 @@ export default {
             else {
                 this.isload = true
                 this.iscreate = true
-                this.ispoem=false
-                this.iscouplet=false
+                this.ispoem = false
+                this.iscouplet = false
                 if (this.flag === 1) {
                     this.tag = 'poem'
                     get('/poem/create', {
                         message: this.message1,
                         tag: this.tag,
                         style: this.style,
-                        rownum:this.rownum
+                        rownum: this.rownum
                     }).then(res => {
                         console.log(res)
                         this.tempid = res.data.data
@@ -286,7 +297,7 @@ export default {
                             get('/poem/get', {
                                 id: this.tempid
                             }).then(res => {
-                                 console.log(res)
+                                console.log(res)
                                 // console.log(res.data.data.output)
                                 if (res.data.data.status === 1) {
                                     this.poem = res.data.data.output
