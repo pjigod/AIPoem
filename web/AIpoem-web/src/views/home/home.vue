@@ -380,6 +380,14 @@ export default {
   right: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
+}
+a:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+  transform: scale(1.05); /* 放大元素 */
 }
 .poem-form{
   position: absolute;
@@ -400,6 +408,10 @@ export default {
   left: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
 }
 .poem-style{
   position: absolute;
@@ -420,6 +432,10 @@ export default {
   right: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
 }
 .poem-stream{
   position: absolute;
@@ -463,6 +479,10 @@ export default {
   right: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
 }
 .LSTM{
   position: absolute;
@@ -483,6 +503,10 @@ export default {
   left: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
 }
 .TensorFlow{
   position: absolute;
@@ -503,6 +527,10 @@ export default {
   right: 0;
   font-size: 30px;
   font-family: "KaiTi";
+  text-decoration: none; /* 去除链接的下划线 */
+  font-weight: bold; /* 设置链接的文字加粗 */
+  border-radius: 5px; /* 设置链接的圆角 */
+  transition: all 0.3s ease; /* 设置过渡效果，让动画平滑进行 */
 }
 .Transformer{
   position: absolute;
