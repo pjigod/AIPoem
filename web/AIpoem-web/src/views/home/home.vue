@@ -229,7 +229,7 @@ export default {
   height: 30px;
   text-indent: 25px;
   border-radius: 16px 0 0 16px;
-  border: 0 none;
+  border: 1px solid blanchedalmond;
   outline: none;
 }
 

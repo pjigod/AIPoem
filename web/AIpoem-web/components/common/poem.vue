@@ -92,7 +92,7 @@ export default {
 
 <style>
 .picontainer {
-    height: 350px;
+    height: 420px;
     width: 420px;
     background-color: #EBECED;
     box-shadow: 2px 2px 2px 2px black;
@@ -113,7 +113,7 @@ export default {
 
 .title {
     width: 25px;
-    height: 250px;
+    height: 320px;
     display: flex;
     align-items: center;
     font-size: 25px;
@@ -121,7 +121,7 @@ export default {
 }
 
 .poemtext {
-    height: 250px;
+    height: 320px;
     margin-right: 25px;
     font-size: 27px;
     font-family: KaiTi;
