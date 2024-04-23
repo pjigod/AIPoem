@@ -93,7 +93,9 @@
         <div class="createpoem">
             <div class="crecontainer">
                 <div class="poemtocre">
-                    <poemGradiant v-if="ispoem" :poemtext="poem"></poemGradiant>
+                <spoemGradiant :poemt="poem"></spoemGradiant>
+
+                    <!-- <poemGradiant v-if="ispoem" :poemtext="poem"></poemGradiant> -->
                 </div>
                 <div class="couplettocre">
                     <coupletGradiant v-if="iscouplet" :upper="upper" :lower="lower"></coupletGradiant>
@@ -127,6 +129,8 @@ import Menu from '../../../components/common/Menu.vue'
 import { get } from '../../../utils/request'
 import poemGradiant from '../../../components/common/poemGradiant.vue'
 import coupletGradiant from '../../../components/common/coupletGradiant.vue'
+import spoemGradiant from '../../../components/common/spoemGradiant.vue'
+
 export default {
     data() {
         return {
@@ -152,7 +156,8 @@ export default {
     },
     components: {
         poemGradiant,
-        coupletGradiant
+        coupletGradiant,
+        spoemGradiant
     },
     methods: {
         deletepoem() {
@@ -440,7 +445,7 @@ export default {
 
 .crecontainer {
     width: 70%;
-    height: 740px;
+    height: 540px;
     box-shadow: 0 0 2px 2px gray;
     border-radius: 5px;
     display: flex;
@@ -546,10 +551,12 @@ export default {
     justify-content: center;
 }
 
-/* .poemtocre{
-    width: 315px;
-    
-} */
+.poemtocre{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .dot-spinner {
     --uib-size: 2.8rem;
     --uib-speed: .9s;
