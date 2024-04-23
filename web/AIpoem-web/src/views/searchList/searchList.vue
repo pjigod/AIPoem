@@ -79,7 +79,7 @@ input.search {
 
 .suggestions li {
     width: 700px;
-    height: 50px;
+    height: 75px;
     background: white;
     list-style: none;
     border-bottom: 1px solid #d8d8d8;
@@ -122,8 +122,8 @@ span.title {
 span.title {
     color: #7c8e94;
     position: absolute;
-    right: -280px;
-    bottom: -25px;
+    right: 20px;
+    top:-60px;
 }
 
 .details {

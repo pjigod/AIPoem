@@ -142,7 +142,7 @@ export default {
             poem: '',
             tempid: 0,
             isload: false,
-            ispoem: true,
+            ispoem: false,
             iscouplet: false,
             upper: '',
             lower: '',
