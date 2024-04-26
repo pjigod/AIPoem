@@ -131,7 +131,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     padding-top: 40px;
-    background: url(../../static/img/pcbg.jpg);
+    background: url(../../static/img/pcbg1.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

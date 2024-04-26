@@ -10,6 +10,8 @@
         <div class="input-group">
           <label for="password">输入修改后的密码</label>
           <input type="password" name="password" id="password" placeholder="修改后的密码" v-model="password">
+          <el-icon v-if="flag" class="toggle-password" @click="ShowHide()"><View /></el-icon>
+          <el-icon v-else  class="toggle-password" @click="ShowHide()"><Hide /></el-icon>
         </div>
         <div class="input-group">
           <label for="code">邮箱验证码</label>
@@ -32,7 +34,8 @@ export default {
     return {
       username: '',
       password: '',
-      code: ''
+      code: '',
+      flag:true
     }
   },
   methods: {
@@ -63,6 +66,17 @@ export default {
           alert(err.response.data.message);
         });
     },
+    ShowHide() {
+      var passwordInput = document.getElementById("password");
+      // 切换密码输入框的 type 属性
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text"; // 显示密码
+        this.flag=false // 切换图标为打开眼睛
+      } else {
+        passwordInput.type = "password"; // 隐藏密码
+        this.flag=true // 切换图标为闭眼
+      }
+    },
     passwordChange() {
       //密码修改方法
       get('/user/forget', {
@@ -80,6 +94,15 @@ export default {
 }
 </script>
 <style scoped>
+.toggle-password {
+  position: absolute;
+  top: 49%;
+  right: 12%; /* 调整图标距离右边的位置 */
+  transform: translateY(-50%); /* 垂直居中 */
+  cursor: pointer;
+  width: 20px;
+  height:20px
+}
 .form-container {
   width: 320px;
   border-radius: 0.75rem;
