@@ -49,7 +49,7 @@
   <style>
   .char {
     opacity: 1;
-    font-size: 32px;
+    font-size: 31px;
     font-family: KaiTi;
     margin: 7px 1px 7px 1px;
     

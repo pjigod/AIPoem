@@ -92,8 +92,8 @@
         </div>
         <div class="createpoem">
             <div class="crecontainer">
-                <div class="poemtocre">
-                <spoemGradiant :poemt="poem"></spoemGradiant>
+                <div class="poemtocre" v-if="ispoem">
+                    <spoemGradiant :poemt="poem" ></spoemGradiant>
 
                     <!-- <poemGradiant v-if="ispoem" :poemtext="poem"></poemGradiant> -->
                 </div>
@@ -162,7 +162,7 @@ export default {
     methods: {
         deletepoem() {
             alert("删除成功")
-           //console.log(1)
+            //console.log(1)
             this.isload = false
             this.ispoem = false
             this.iscouplet = false
@@ -198,23 +198,30 @@ export default {
                 this.message3 = ''
                 this.message4 = ''
                 this.message5 = ''
+                this.rownum=''
             }
             if (f === 3) {
                 this.message2 = ''
                 this.message1 = ''
                 this.message4 = ''
                 this.message5 = ''
+                this.rownum=''
+
             }
             if (f === 4) {
                 this.message2 = ''
                 this.message3 = ''
                 this.message1 = ''
                 this.message5 = ''
+                this.rownum=''
+
             }
             if (f === 5) {
                 this.message2 = ''
                 this.message3 = ''
                 this.message4 = ''
+                this.rownum=''
+
                 this.message1 = ''
             }
             //  console.log(this.flag)
@@ -254,7 +261,7 @@ export default {
 
 
                             })
-                        }, 8000)
+                        }, 10000)
 
                     })
 
@@ -285,7 +292,7 @@ export default {
                                 }
                                 // console.log(this.poem)
                             })
-                        }, 8000)
+                        }, 10000)
 
                     })
                 }
@@ -314,7 +321,7 @@ export default {
 
 
                             })
-                        }, 8000)
+                        }, 10000)
 
                     })
                 }
@@ -345,7 +352,7 @@ export default {
 
                                 // console.log(this.poem)
                             })
-                        }, 8000)
+                        }, 10000)
 
 
                     }).error(err => {
@@ -377,7 +384,7 @@ export default {
 
 
                             })
-                        }, 8000)
+                        }, 10000)
 
                     })
                 }
@@ -551,12 +558,13 @@ export default {
     justify-content: center;
 }
 
-.poemtocre{
+.poemtocre {
     width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .dot-spinner {
     --uib-size: 2.8rem;
     --uib-speed: .9s;
