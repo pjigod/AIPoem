@@ -52,7 +52,7 @@ const router = createRouter({
       component: forget
     },
     {
-      path: '/poemCollect/:pagenum',
+      path: '/poemCollect/',
       name: 'poemCollect',
       component: poemCollect,
 

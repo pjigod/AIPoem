@@ -14,7 +14,7 @@
         <text @click="changeFlag(2)" :class="{ 'white-text': flag === 2 }">
           创作</text>
       </div>
-      <div id="collection" class="tabbar" @click="navTo('/poemCollect/0')">
+      <div id="collection" class="tabbar" @click="navTo('/poemCollect')">
         <text @click="changeFlag(3)" :class="{ 'white-text': flag === 3 }">
           诗廊</text>
       </div>
@@ -100,7 +100,7 @@ export default {
     if (this.currentPage === "/createPoem") {
       this.flag = 2;
     }
-    if (this.currentPage === "/poemCollect/0") {
+    if (this.currentPage === "/poemCollect") {
       this.flag = 3;
     }
     if (this.currentPage === "/my") {
