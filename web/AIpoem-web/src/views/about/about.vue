@@ -16,7 +16,7 @@
                         <div class="temp1"></div>
                         <div class="content">
                             <div class="self">
-                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                <p>武汉大学计算机学院软件工程专业大三年级本科生，AI赋诗项目负责人，主要负责前端页面搭建以及项目测试
                                 </p>
 
                             </div>
@@ -24,7 +24,7 @@
                                 <div class="imgBx">
                                     <img src="../../static/img/1.jpg">
                                 </div>
-                                <h3>ryx1</h3><span>AIAIAIAIAI</span>
+                                <h3>鲁隆俊</h3><span>3396775114@qq.com</span>
                             </div>
                         </div>
                     </div>
@@ -34,15 +34,14 @@
                         <div class="temp1"></div>
                         <div class="content">
                             <div class="self">
-                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                <p>武汉大学计算机学院软件工程专业大三年级本科生，AI赋诗项目成员，主要负责前端页面搭建以及整体接口对接
                                 </p>
-
                             </div>
                             <div class="details">
                                 <div class="imgBx">
                                     <img src="../../static/img/2.jpg">
                                 </div>
-                                <h3>ryx2</h3><span>AIAIAIAIAI</span>
+                                <h3>吴琛菲</h3><span>1430275877@qq.com</span>
                             </div>
                         </div>
                     </div>
@@ -52,7 +51,7 @@
                         <div class="temp1"></div>
                         <div class="content">
                             <div class="self">
-                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                <p>武汉大学计算机学院软件工程专业大三年级本科生，AI赋诗项目成员，主要负责后端以及数据库设计与实现
                                 </p>
 
                             </div>
@@ -60,7 +59,7 @@
                                 <div class="imgBx">
                                     <img src="../../static/img/3.jpg">
                                 </div>
-                                <h3>ryx3</h3><span>AIAIAIAIAI</span>
+                                <h3>刘承章</h3><span>996613570@qq.com</span>
                             </div>
                         </div>
                     </div>
@@ -70,7 +69,7 @@
                         <div class="temp1"></div>
                         <div class="content">
                             <div class="self">
-                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
+                                <p>武汉大学电子信息学院通信工程专业大三本科生，AI赋诗项目成员，参与了算法端编码和测试端
                                 </p>
 
                             </div>
@@ -78,30 +77,11 @@
                                 <div class="imgBx">
                                     <img src="../../static/img/4.jpg">
                                 </div>
-                                <h3>ryx4</h3><span>AIAIAIAIAI</span>
+                                <h3>易志鹏</h3><span>1954564109@qq.com</span>
                             </div>
                         </div>
                     </div>
                 </swiper-slide>
-                <swiper-slide>
-                    <div class="testmonialB">
-                        <div class="temp1"></div>
-                        <div class="content">
-                            <div class="self">
-                                <p>我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ryx我叫ry
-                                </p>
-
-                            </div>
-                            <div class="details">
-                                <div class="imgBx">
-                                    <img src="../../static/img/5.jpg">
-                                </div>
-                                <h3>ryx5</h3><span>AIAIAIAIAI</span>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-
 
             </swiper>
         </div>
