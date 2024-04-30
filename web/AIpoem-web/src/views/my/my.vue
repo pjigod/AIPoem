@@ -172,7 +172,9 @@ export default {
     },
   },
   mounted() {
-    this.getInfo();
+    setInterval(()=>{
+      this.getInfo();
+    },500)
   },
 };
 </script>
