@@ -192,6 +192,7 @@ export default {
                 this.message3 = ''
                 this.message4 = ''
                 this.message5 = ''
+                this.style=''
             }
             if (f === 2) {
                 this.message1 = ''
@@ -199,6 +200,7 @@ export default {
                 this.message4 = ''
                 this.message5 = ''
                 this.rownum=''
+                this.style=''
             }
             if (f === 3) {
                 this.message2 = ''
@@ -214,14 +216,14 @@ export default {
                 this.message1 = ''
                 this.message5 = ''
                 this.rownum=''
-
+                this.style=''
             }
             if (f === 5) {
                 this.message2 = ''
                 this.message3 = ''
                 this.message4 = ''
                 this.rownum=''
-
+                this.style=''
                 this.message1 = ''
             }
             //  console.log(this.flag)
