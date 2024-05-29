@@ -108,7 +108,7 @@ export default {
                 }
                 // console.log(this.$route.params.pagenum)
                 // console.log(parseInt(this.page))
-                //  console.log(res)
+                  //console.log(res)
                 //  console.log(1)
                  
 
