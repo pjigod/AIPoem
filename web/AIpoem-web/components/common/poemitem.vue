@@ -112,11 +112,13 @@ function todownload() {
 
 onMounted(() => {
     //console.log(pid.value)
-    get('/comment/getbypoemid', {
+    setInterval(()=>{
+        get('/comment/getbypoemid', {
         poemid: pid.value
     }).then(res => {
         commentList.value = res.data.data
     })
+    },500)
 
     get('/poem/gptbypoem', {
         id: pid.value

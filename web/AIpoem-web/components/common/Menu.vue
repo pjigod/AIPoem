@@ -110,6 +110,9 @@ export default {
       this.flag = 5;
     }
     this.getAvatar();
+    setInterval(()=>{
+      this.getAvatar();
+    },500)
   },
 };
 </script>

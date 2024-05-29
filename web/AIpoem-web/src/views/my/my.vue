@@ -173,6 +173,13 @@ export default {
   },
   mounted() {
     this.getInfo();
+    setInterval(()=>{
+      get("/user/profile").then(res=>{
+        this.avatarUrl = res.data.data.avatar;
+        this.photo =
+          "http://124.221.53.69:8080/photo/get?url=" + this.avatarUrl;
+      })
+    },500)
   },
 };
 </script>
